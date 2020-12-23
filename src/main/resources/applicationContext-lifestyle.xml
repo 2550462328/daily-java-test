@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="beanPostProcessor" class="cn.zhanghui.demo.daily.spring.lifestyle.MyBeanPostProcessor">
+    </bean>
+
+    <bean id="instantiationAwareBeanPostProcessor" class="cn.zhanghui.demo.daily.spring.lifestyle.MyInstantiationAwareBeanPostProcessor">
+    </bean>
+
+    <bean id="beanFactoryPostProcessor" class="cn.zhanghui.demo.daily.spring.lifestyle.MyBeanFactoryPostProcessor">
+    </bean>
+
+    <!--<bean id="user" class="cn.zhanghui.demo.daily.spring.lifestyle.User" init-method="myInit"-->
+          <!--destroy-method="myDestory" scope="singleton">-->
+        <!--<property name="name" value="zhanghui" />-->
+        <!--<property name="userPwd" value="zhanghui123" />-->
+    <!--</bean>-->
+    <bean id="user" class="cn.zhanghui.demo.daily.spring.lifestyle.User" init-method="myInit"
+          destroy-method="myDestory" scope="singleton">
+        <constructor-arg value="zhanghui"></constructor-arg>
+        <constructor-arg value="zhanghui123"></constructor-arg>
+    </bean>
+</beans>
