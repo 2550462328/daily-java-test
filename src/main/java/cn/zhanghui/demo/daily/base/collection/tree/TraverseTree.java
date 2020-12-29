@@ -119,15 +119,15 @@ public class TraverseTree {
         stack.push(root);
         while (!stack.isEmpty()) {
             curr = stack.peek();
-            if((curr.left == null && curr.right == null) || (prev != null && (prev == curr.left || prev == curr.right)) ){
+            if ((curr.left == null && curr.right == null) || (prev != null && (prev == curr.left || prev == curr.right))) {
                 System.out.println(curr.val + " -> ");
                 stack.poll();
                 prev = curr;
-            }else{
-                if(curr.right != null){
+            } else {
+                if (curr.right != null) {
                     stack.push(curr.right);
                 }
-                if(curr.left != null){
+                if (curr.left != null) {
                     stack.push(curr.left);
                 }
             }
