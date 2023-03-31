@@ -1,13 +1,13 @@
 package cn.zhanghui.demo.daily.base.stream;
 
+import com.google.common.base.Predicate;
+
 import java.util.ArrayList;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
 import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
-
-import com.google.common.base.Predicate;
 
 /**
  * @ClassName: ReduceTest.java

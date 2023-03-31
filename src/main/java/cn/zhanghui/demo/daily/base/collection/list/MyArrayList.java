@@ -1,7 +1,6 @@
 package cn.zhanghui.demo.daily.base.collection.list;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @ClassName: MyArrayList.java

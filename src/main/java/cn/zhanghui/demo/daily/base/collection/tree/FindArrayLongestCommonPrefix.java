@@ -1,11 +1,5 @@
 package cn.zhanghui.demo.daily.base.collection.tree;
 
-import org.springframework.context.ApplicationContext;
-
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-
 /**
  * @author ZhangHui
  * @version 1.0

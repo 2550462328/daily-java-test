@@ -1,7 +1,5 @@
 package cn.zhanghui.demo.daily.base.collection.tree;
 
-import sun.reflect.generics.tree.Tree;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;

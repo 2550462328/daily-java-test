@@ -1,43 +1,41 @@
 package cn.zhanghui.demo.daily.base.algorithm.sort.base;
 
-import java.util.Arrays;
-
 /**
+ * Description:
  * 选择排序
  * 　　a、将第一个值看成最小值
  * 　　b、然后和后续的比较找出最小值和下标
  * 　　c、交换本次遍历的起始值和最小值
  * 　　d、说明：每次遍历的时候，将前面找出的最小值，看成一个有序的列表，后面的看成无序的列表，然后每次遍历无序列表找出最小值
- * @author: ZhangHui
- * @date: 2020/12/5 14:46
- * @version：1.0
- */
-public class SelectSort {
+ *
+ * @author createdBy huizhang43.
+ * @date createdAt 2023/3/31 10:02
+ **/
+public class SelectSort extends AbstractBaseSort {
 
     public static void main(String[] args) {
-
-        int[] nums = {2, 1, 4, 3, 4, 1, 5, 2};
-        new SelectSort().sort(nums);
-        System.out.println(Arrays.toString(nums));
+        new SelectSort().baseSort(false);
     }
 
-    public void sort(int[] nums) {
-
-        for (int i = 0; i < nums.length; i++) {
-
-            int min = nums[i];
-            int min_index = i;
-
-            for (int j = i + 1; j < nums.length; j++) {
-                if(nums[j] < min){
-                    min = nums[j];
-                    min_index = j;
+    @Override
+    void sort(int[] source, boolean asc) {
+        for (int i = 0; i < source.length; i++) {
+            // 1. 选择第一个值做最小/大值
+            int limitValue = source[i];
+            int limitIndex = i;
+            for (int j = i + 1; j < source.length; j++) {
+                boolean changeValue = asc ^ source[j] > limitValue;
+                // 2. 寻找比它大/小的值替代它
+                if (changeValue) {
+                    limitValue = source[j];
+                    limitIndex = j;
                 }
             }
-
-            int temp = nums[i];
-            nums[i] = min;
-            nums[min_index] = temp;
+            // 3. 把最大/小值放在第一位 实现顺序排列
+            if (limitIndex != i) {
+                source[limitIndex] = source[i];
+                source[i] = limitValue;
+            }
         }
     }
 }

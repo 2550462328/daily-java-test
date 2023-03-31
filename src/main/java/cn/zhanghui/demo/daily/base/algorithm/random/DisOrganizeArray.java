@@ -1,6 +1,9 @@
 package cn.zhanghui.demo.daily.base.algorithm.random;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
 
 /**
  * 打乱一个没有重复元素的数组。

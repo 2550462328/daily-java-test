@@ -1,6 +1,5 @@
 package cn.zhanghui.demo.daily.base.algorithm.random;
 
-import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**

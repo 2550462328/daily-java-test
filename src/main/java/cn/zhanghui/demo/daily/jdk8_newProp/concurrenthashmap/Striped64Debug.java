@@ -1,8 +1,8 @@
 package cn.zhanghui.demo.daily.jdk8_newProp.concurrenthashmap;
 
-import java.util.function.LongBinaryOperator;
-import java.util.function.DoubleBinaryOperator;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.DoubleBinaryOperator;
+import java.util.function.LongBinaryOperator;
 
 /**
  * A package-local class holding common representation and mechanics

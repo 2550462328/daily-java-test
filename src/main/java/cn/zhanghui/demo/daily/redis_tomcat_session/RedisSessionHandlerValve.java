@@ -1,15 +1,13 @@
 package cn.zhanghui.demo.daily.redis_tomcat_session;
 
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-
+import lombok.extern.log4j.Log4j;
 import org.apache.catalina.connector.Request;
 import org.apache.catalina.connector.Response;
 import org.apache.catalina.valves.ValveBase;
 
-import lombok.extern.log4j.Log4j;
+import javax.servlet.ServletException;
+import java.io.IOException;
 
 @Log4j
 public class RedisSessionHandlerValve extends ValveBase {

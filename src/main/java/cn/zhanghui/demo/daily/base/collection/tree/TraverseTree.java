@@ -1,6 +1,6 @@
 package cn.zhanghui.demo.daily.base.collection.tree;
 
-import java.util.*;
+import java.util.LinkedList;
 
 /**
  * @ClassName TraverseTree

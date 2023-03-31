@@ -1,9 +1,9 @@
 package cn.zhanghui.demo.daily.design_model.createobj.factory.spring_factory.mockspring;
 
-import java.util.Properties;
-
 import cn.zhanghui.demo.daily.design_model.createobj.factory.spring_factory.Car;
 import junit.framework.Test;
+
+import java.util.Properties;
 
 /**
  * @ClassName: Main.java

@@ -1,10 +1,10 @@
 package cn.zhanghui.demo.daily.base.util;
 
+import org.joda.time.DateTime;
+
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import org.joda.time.DateTime;
 
 /**
  * Java的Timer实现定时任务 比较scheduled和scheduledFixRate

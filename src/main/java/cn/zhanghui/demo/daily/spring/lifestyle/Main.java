@@ -1,6 +1,5 @@
 package cn.zhanghui.demo.daily.spring.lifestyle;
 
-import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

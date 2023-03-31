@@ -1,7 +1,5 @@
 package cn.zhanghui.demo.daily.base.collection.array;
 
-import java.util.Arrays;
-
 /**
  * @author ZhangHui
  * @version 1.0

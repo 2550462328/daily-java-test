@@ -1,30 +1,14 @@
 package cn.zhanghui.demo.daily.redis_tomcat_session;
 
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.EnumSet;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-
-import org.apache.catalina.Lifecycle;
-import org.apache.catalina.LifecycleException;
-import org.apache.catalina.LifecycleListener;
-import org.apache.catalina.LifecycleState;
-import org.apache.catalina.Loader;
-import org.apache.catalina.Session;
-import org.apache.catalina.Valve;
+import lombok.extern.log4j.Log4j;
+import org.apache.catalina.*;
 import org.apache.catalina.session.ManagerBase;
 import org.apache.catalina.util.LifecycleSupport;
-
-import lombok.extern.log4j.Log4j;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.JedisPoolConfig;
-import redis.clients.jedis.JedisSentinelPool;
-import redis.clients.jedis.Protocol;
+import redis.clients.jedis.*;
 import redis.clients.util.Pool;
+
+import java.io.IOException;
+import java.util.*;
 
 @Log4j
 public class RedisSessionManager extends ManagerBase implements Lifecycle {

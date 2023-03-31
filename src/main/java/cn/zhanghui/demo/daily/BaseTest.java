@@ -1,14 +1,6 @@
 package cn.zhanghui.demo.daily;
 
 
-import org.springframework.util.StopWatch;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author ZhangHui
  * @version 1.0

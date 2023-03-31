@@ -1,9 +1,9 @@
 package cn.zhanghui.demo.daily.base.util;
 
+import org.springframework.beans.BeanUtils;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.beans.BeanUtils;
 
 /**
  * @ClassName: BeansCopyTest.java

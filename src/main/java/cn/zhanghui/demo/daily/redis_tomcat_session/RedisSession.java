@@ -1,13 +1,12 @@
 package cn.zhanghui.demo.daily.redis_tomcat_session;
 
-import java.io.IOException;
-import java.security.Principal;
-import java.util.HashMap;
-
+import lombok.extern.log4j.Log4j;
 import org.apache.catalina.Manager;
 import org.apache.catalina.session.StandardSession;
 
-import lombok.extern.log4j.Log4j;
+import java.io.IOException;
+import java.security.Principal;
+import java.util.HashMap;
 
 @Log4j
 public class RedisSession extends StandardSession {

@@ -1,6 +1,8 @@
 package cn.zhanghui.demo.daily.base.algorithm.demo;
 
-import java.util.*;
+import java.util.BitSet;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * 统计所有小于非负整数 n 的质数的数量。

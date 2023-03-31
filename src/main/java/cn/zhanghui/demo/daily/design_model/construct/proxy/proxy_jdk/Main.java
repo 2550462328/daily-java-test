@@ -1,9 +1,9 @@
 package cn.zhanghui.demo.daily.design_model.construct.proxy.proxy_jdk;
 
-import java.lang.reflect.Proxy;
-
 import cn.zhanghui.demo.daily.design_model.construct.proxy.proxy_static.BuyHouse;
 import cn.zhanghui.demo.daily.design_model.construct.proxy.proxy_static.BuyHouseImpl;
+
+import java.lang.reflect.Proxy;
 
 /**
  * 

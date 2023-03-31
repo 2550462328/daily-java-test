@@ -1,38 +1,39 @@
 package cn.zhanghui.demo.daily.base.algorithm.sort.base;
 
-import java.util.Arrays;
-
 /**
+ * Description:
  * 希尔排序
  * 　  a、基本上和插入排序一样的道理
  * 　　b、不一样的地方在于，每次循环的步长，通过减半的方式来实现
  * 　　c、说明：基本原理和插入排序类似，不一样的地方在于。通过间隔多个数据来进行插入排序。
- * @author: ZhangHui
- * @date: 2020/12/5 14:46
- * @version：1.0
- */
-public class ShellSort {
+ *
+ * @author createdBy huizhang43.
+ * @date createdAt 2023/3/31 10:26
+ **/
+public class ShellSort extends AbstractBaseSort {
 
     public static void main(String[] args) {
-
-        int[] nums = {2, 1, 4, 3, 4, 1, 5, 2};
-        new ShellSort().sort(nums);
-        System.out.println(Arrays.toString(nums));
+        new ShellSort().baseSort(true);
     }
 
-    public void sort(int[] nums) {
+    @Override
+    void sort(int[] source, boolean asc) {
 
-        // i控制间隔，最小是1，等同于插入排序
-        for (int i = nums.length / 2; i > 0; i /= 2) {
-           // j控制每次比较的起点
-            for (int j = i; j < nums.length; j++) {
-                // k控制最小值的传递
-                for (int k = j; k > 0 && k - i >= 0; k -= i) {
-                    if (nums[k] < nums[k - i]) {
-                        int temp = nums[k];
-                        nums[k] = nums[k - i];
-                        nums[k - i] = temp;
+        int length = source.length;
+        //1. 确定步长 这里采用折叠的步长计算
+        //step = 1 就是插入排序
+        for (int step = length / 2; step > 0; step /= 2) {
+            //2. i在前面跑
+            for (int i = step; i < length; i++) {
+                // 3. j在后面比较 比较的跨度是 step 即  0 ... step ... step * 2 ...step * 3
+                for (int j = i; j >= step; j -= step) {
+                    boolean changeValue = asc ^ source[j] > source[j - step];
+                    if (changeValue) {
+                        int temp = source[j];
+                        source[j] = source[j - step];
+                        source[j - step] = temp;
                     } else {
+                        // 4. 因为排序后基于跨度的排列是有序的  不需要替换的时候 就不需要继续向下比较了
                         break;
                     }
                 }

@@ -1,8 +1,9 @@
 package cn.zhanghui.demo.daily.jdk8_newProp.atomic;
 
-import java.util.function.IntUnaryOperator;
-import java.util.function.IntBinaryOperator;
 import sun.misc.Unsafe;
+
+import java.util.function.IntBinaryOperator;
+import java.util.function.IntUnaryOperator;
 
 public class AtomicIntegerDebug extends Number implements java.io.Serializable {
     private static final long serialVersionUID = 6214790243416807050L;

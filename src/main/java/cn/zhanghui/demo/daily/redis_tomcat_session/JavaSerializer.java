@@ -4,11 +4,11 @@ import org.apache.catalina.util.CustomObjectInputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Enumeration;
-import java.util.HashMap;
 import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Enumeration;
+import java.util.HashMap;
 
 public class JavaSerializer implements Serializer {
     private ClassLoader loader;

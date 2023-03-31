@@ -3,7 +3,8 @@ package cn.zhanghui.demo.daily.base.algorithm.demo;
 import org.springframework.util.StopWatch;
 import org.springframework.util.StringUtils;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author ZhangHui

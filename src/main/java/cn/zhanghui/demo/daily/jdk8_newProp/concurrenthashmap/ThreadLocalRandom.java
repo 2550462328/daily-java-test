@@ -35,6 +35,8 @@
 
 package cn.zhanghui.demo.daily.jdk8_newProp.concurrenthashmap;
 
+import sun.misc.VM;
+
 import java.io.ObjectStreamField;
 import java.util.Random;
 import java.util.Spliterator;
@@ -47,7 +49,6 @@ import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.StreamSupport;
-import sun.misc.VM;
 
 /**
  * A random number generator isolated to the current thread. Like the global

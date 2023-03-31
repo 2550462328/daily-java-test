@@ -1,12 +1,12 @@
 package cn.zhanghui.demo.daily.jdk8_newProp.stringjoiner;
 
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.annotation.JSONType;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
-
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.annotation.JSONType;
 
 /**
  * @author ZhangHui

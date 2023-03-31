@@ -1,9 +1,5 @@
 package cn.zhanghui.demo.daily.base.algorithm.dynamic;
 
-import org.apache.commons.lang.ArrayUtils;
-
-import java.util.Arrays;
-
 /**
  * @ClassName FindMaxProfit
  * @Description: 给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
