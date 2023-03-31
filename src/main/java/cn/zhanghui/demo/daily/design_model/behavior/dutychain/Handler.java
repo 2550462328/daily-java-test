@@ -11,7 +11,7 @@ public abstract class Handler {
 
     protected abstract void handleRequest(int price);
 
-    private   Handler successor = null;
+    private Handler successor = null;
 
     public void setSuccessor(Handler successor) {
         this.successor = successor;

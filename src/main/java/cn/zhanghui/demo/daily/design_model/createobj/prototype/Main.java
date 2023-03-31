@@ -13,8 +13,8 @@ public class Main {
         IdeaTool ideaTool = new IdeaTool();
 
         EditManager manager = new EditManager();
-        manager.registerTool("ecliseTool",ecliseTool);
-        manager.registerTool("ideaTool",ideaTool);
+        manager.registerTool("ecliseTool", ecliseTool);
+        manager.registerTool("ideaTool", ideaTool);
 
         manager.getTool("ideaTool").use();
     }

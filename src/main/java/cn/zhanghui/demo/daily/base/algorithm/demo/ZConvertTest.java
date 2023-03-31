@@ -7,17 +7,17 @@ import java.util.Objects;
  * @version 1.0
  * @className ZConvertTest
  * @description 将一个给定字符串根据给定的行数，以从上往下、从左到右进行 Z 字形排列。
- *
+ * <p>
  * 比如输入字符串为 "LEETCODEISHIRING" 行数为 3 时，排列如下：
- *
+ * <p>
  * L   C   I   R
  * E T O E S I I G
  * E   D   H   N
- *
+ * <p>
  * 之后，你的输出需要从左往右逐行读取，产生出一个新的字符串，比如："LCIRETOESIIGEDHN"。
- *
- *  解题思路：
- *
+ * <p>
+ * 解题思路：
+ * <p>
  * 对于n行的, s中的第i个字符：
  * 对余数进行判断
  * i%(2n-2) == 0 ----> row0
@@ -30,7 +30,6 @@ import java.util.Objects;
  * k<=n-1时候，s[i]就属于第k行
  * k>n-1时候，s[i]就属于2n-2-k行
  * 最后将rows拼接起来就行了
- *
  * @date 2020/8/24
  */
 public class ZConvertTest {
@@ -38,12 +37,12 @@ public class ZConvertTest {
     public static void main(String[] args) {
         String target = "LEETCODEISHIRING";
 
-        System.out.println(convertToZType(target,3));
+        System.out.println(convertToZType(target, 3));
 
-        System.out.println(Objects.equals("LCIRETOESIIGEDHN",convertToZType(target,3)));
+        System.out.println(Objects.equals("LCIRETOESIIGEDHN", convertToZType(target, 3)));
     }
 
-    public static String convertToZType(String target, int depth){
+    public static String convertToZType(String target, int depth) {
         if (depth == 1) return target;
         StringBuilder sb = new StringBuilder();
         int n = target.length();

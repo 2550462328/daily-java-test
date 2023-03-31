@@ -5,7 +5,7 @@ package cn.zhanghui.demo.daily.design_model.construct.facade;
  * @version 1.0
  * @className CPU
  * @description 外观模式中的子系统角色
- *              这里描述Memory的细节操作
+ * 这里描述Memory的细节操作
  * @date 2020/6/23
  */
 public class Memory implements Function {

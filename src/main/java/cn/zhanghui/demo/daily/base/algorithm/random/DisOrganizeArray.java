@@ -7,19 +7,19 @@ import java.util.Random;
 
 /**
  * 打乱一个没有重复元素的数组。
- *
+ * <p>
  * 示例:
- *
+ * <p>
  * // 以数字集合 1, 2 和 3 初始化数组。
  * int[] nums = {1,2,3};
  * Solution solution = new Solution(nums);
- *
+ * <p>
  * // 打乱数组 [1,2,3] 并返回结果。任何 [1,2,3]的排列返回的概率应该相同。
  * solution.shuffle();
- *
+ * <p>
  * // 重设数组到它的初始状态[1,2,3]。
  * solution.reset();
- *
+ * <p>
  * // 随机返回数组[1,2,3]打乱后的结果。
  * solution.shuffle();
  *
@@ -72,6 +72,7 @@ public class DisOrganizeArray {
 
     /**
      * 从numsList中获取随机数并移除它
+     *
      * @param numsList
      * @return int
      */
@@ -91,19 +92,20 @@ public class DisOrganizeArray {
     public int[] shuffle_advanced() {
         int len = nums_original.length;
 
-        for(int i = 0; i < len; i++){
-            int replace_index = getRandomThanMin(i,len);
+        for (int i = 0; i < len; i++) {
+            int replace_index = getRandomThanMin(i, len);
             int temp = nums_original[i];
             nums_original[i] = nums_original[replace_index];
             nums_original[replace_index] = temp;
         }
         return nums_original;
     }
+
     /**
      * 获取大于min的随机数
      */
-    private int getRandomThanMin(int min, int max){
-        return random.nextInt((max-min)) + min;
+    private int getRandomThanMin(int min, int max) {
+        return random.nextInt((max - min)) + min;
     }
 
     public static void main(String[] args) {

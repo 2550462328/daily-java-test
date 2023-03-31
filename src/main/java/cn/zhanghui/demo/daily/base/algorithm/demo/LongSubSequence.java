@@ -74,7 +74,7 @@ public class LongSubSequence {
     /**
      * 逆推
      * 思路和顺路差不多
-     *
+     * <p>
      * 只是我们的i是从n~0，而j是在i~n区间查找最长不下降序列
      *
      * @param n 待分析数组
@@ -95,7 +95,7 @@ public class LongSubSequence {
             currMaxL = 0;
 
             for (int j = i + 1; j < len; j++) {
-                if(n[j] >= n[i] && currMaxL < maxLArr[j]){
+                if (n[j] >= n[i] && currMaxL < maxLArr[j]) {
                     currMaxL = maxLArr[j];
                     currMaxI = j;
                 }

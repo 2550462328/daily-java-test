@@ -15,7 +15,7 @@ import java.beans.PropertyDescriptor;
  */
 public class MyInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
 
-    public MyInstantiationAwareBeanPostProcessor(){
+    public MyInstantiationAwareBeanPostProcessor() {
         super();
         System.out.println("全局Bean实例化操作的InstantiationAwareBeanPostProcessor构造器方法");
     }

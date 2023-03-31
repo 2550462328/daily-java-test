@@ -20,7 +20,7 @@ package cn.zhanghui.demo.daily.base.collection.array;
 public class DeleteRepeatArrayElement {
 
     public static void main(String[] args) {
-        int[] target = {-3,-1,-1,0,2,0,0,0,2};
+        int[] target = {-3, -1, -1, 0, 2, 0, 0, 0, 2};
         int len = getNoRepeatArrayLen_twoPointer(target);
 
         for (int k = 0; k < len; k++) {
@@ -35,7 +35,7 @@ public class DeleteRepeatArrayElement {
      * 但问题也在这儿，因为这个公式不是一定成立的，存在num3 & num2 = num2 （偶然事件）
      */
     public static int getNoRepeatArrayLen(int[] nums) {
-        if(nums == null || nums.length == 0){
+        if (nums == null || nums.length == 0) {
             return 0;
         }
 
@@ -67,14 +67,14 @@ public class DeleteRepeatArrayElement {
      * 这是官方的答案，但是这种方式只能解决重复数据连续出现的场景
      */
     public static int getNoRepeatArrayLen_twoPointer(int[] nums) {
-        if(nums == null || nums.length == 0){
+        if (nums == null || nums.length == 0) {
             return 0;
         }
 
         int i = 0;
 
-        for(int j = 1; j < nums.length; j++){
-            if(nums[j] != nums[i]){
+        for (int j = 1; j < nums.length; j++) {
+            if (nums[j] != nums[i]) {
                 nums[++i] = nums[j];
             }
         }

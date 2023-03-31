@@ -15,10 +15,10 @@ public class EcliseTool implements Tool {
 
     @Override
     public Tool getClone() {
-       EcliseTool tool = null;
+        EcliseTool tool = null;
 
         try {
-            tool = (EcliseTool)clone();
+            tool = (EcliseTool) clone();
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }

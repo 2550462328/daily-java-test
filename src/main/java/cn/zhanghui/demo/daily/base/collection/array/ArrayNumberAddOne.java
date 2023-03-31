@@ -7,17 +7,16 @@ import java.util.Arrays;
  * @version 1.0
  * @className ArrayNumberAddOne
  * @description 给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。
- *
+ * <p>
  * 最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。
- *
+ * <p>
  * 你可以假设除了整数 0 之外，这个整数不会以零开头。
- *
+ * <p>
  * 示例 1:
- *
+ * <p>
  * 输入: [1,2,3]
  * 输出: [1,2,4]
  * 解释: 输入数组表示数字 123。
- *
  * @date 2020/9/3
  */
 public class ArrayNumberAddOne {
@@ -37,28 +36,28 @@ public class ArrayNumberAddOne {
 
         int len = digits.length;
 
-        if(len == 0){
+        if (len == 0) {
             return new int[0];
         }
         int carryFlag = 1;
         int index = len - 1;
-        do{
+        do {
             // 有进位 + 1
             int plusVal = (digits[index] + carryFlag) % 10;
-            digits[index --] = plusVal;
+            digits[index--] = plusVal;
 
             // 没有进位的情况，进位标示为0
-            if(digits[index + 1] != 0){
+            if (digits[index + 1] != 0) {
                 carryFlag = 0;
             }
 
             // 有进位且数组遍历到头了，扩容 + 1
-            if(index < 0 && carryFlag == 1){
-                  digits = Arrays.copyOf(digits,len + 1);
-                  index = 0;
+            if (index < 0 && carryFlag == 1) {
+                digits = Arrays.copyOf(digits, len + 1);
+                index = 0;
             }
 
-        }while(index >= 0 && carryFlag != 0);
+        } while (index >= 0 && carryFlag != 0);
 
         return digits;
     }
@@ -71,13 +70,13 @@ public class ArrayNumberAddOne {
 
         int len = digits.length;
 
-        if(len == 0){
+        if (len == 0) {
             return new int[0];
         }
 
-        for(int i = len-1; i >= 0 ;i--){
+        for (int i = len - 1; i >= 0; i--) {
             digits[i] = digits[i]++ % 10;
-            if(digits[i] != 0){
+            if (digits[i] != 0) {
                 return digits;
             }
         }

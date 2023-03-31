@@ -7,8 +7,8 @@ package cn.zhanghui.demo.daily.design_model.createobj.factory.simple_factory;
  * @date: 2019年10月14日 上午9:19:52
  */
 public class CarFactory implements VehileFactory {
-	@Override
-	public Moveable createCar() {
-		return new Car();
-	}
+    @Override
+    public Moveable createCar() {
+        return new Car();
+    }
 }

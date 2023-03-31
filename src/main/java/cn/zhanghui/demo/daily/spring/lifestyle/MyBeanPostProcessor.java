@@ -12,7 +12,7 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
  */
 public class MyBeanPostProcessor implements BeanPostProcessor {
 
-    public MyBeanPostProcessor(){
+    public MyBeanPostProcessor() {
         super();
         System.out.println("全局Bean初始化操作的BeanPostProcessor构造器方法");
     }

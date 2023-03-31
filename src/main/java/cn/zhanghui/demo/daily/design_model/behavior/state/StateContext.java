@@ -18,7 +18,7 @@ public class StateContext {
 
     private State state;
 
-    public StateContext(State state){
+    public StateContext(State state) {
         this.state = state;
     }
 
@@ -30,7 +30,7 @@ public class StateContext {
         this.state = state;
     }
 
-    public void request(){
+    public void request() {
         this.state.handle(this);
     }
 }

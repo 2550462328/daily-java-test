@@ -43,7 +43,7 @@ public class IsRingLinkList {
      */
     public boolean hasCycle(ListNode head) {
 
-        if(head == null){
+        if (head == null) {
             return false;
         }
 
@@ -56,8 +56,8 @@ public class IsRingLinkList {
         ListNode fast = dummy1;
         ListNode slow = dummy2;
 
-        while(fast != null && fast.next != null){
-            if(fast == slow){
+        while (fast != null && fast.next != null) {
+            if (fast == slow) {
                 return true;
             }
 

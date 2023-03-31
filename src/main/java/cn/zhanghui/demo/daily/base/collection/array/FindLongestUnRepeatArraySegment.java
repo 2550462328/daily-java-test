@@ -7,9 +7,9 @@ import java.util.Set;
 
 /**
  * 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
- *
+ * <p>
  * 示例 1:
- *
+ * <p>
  * 输入: "abcabcbb"
  * 输出: 3
  * 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
@@ -33,31 +33,31 @@ public class FindLongestUnRepeatArraySegment {
 
         char[] chars = s.toCharArray();
 
-        Map<Character,Integer> map = null;
+        Map<Character, Integer> map = null;
 
         int maxLength = 0;
 
-        while(right < chars.length){
+        while (right < chars.length) {
 
-            if(map == null){
+            if (map == null) {
                 map = new HashMap<>();
 
                 // 存放未重复的元素
-                for(int i = left; i < right ; i++){
-                    map.put(chars[i],i);
+                for (int i = left; i < right; i++) {
+                    map.put(chars[i], i);
                 }
             }
 
-            if(!map.containsKey(chars[right])){
-                map.put(chars[right],right);
-            }else{
-                maxLength = Math.max(maxLength,right-left);
+            if (!map.containsKey(chars[right])) {
+                map.put(chars[right], right);
+            } else {
+                maxLength = Math.max(maxLength, right - left);
                 left = map.get(chars[right]) + 1;
                 map = null;
             }
             right++;
         }
-        maxLength = Math.max(maxLength,right - left);
+        maxLength = Math.max(maxLength, right - left);
         return maxLength;
     }
 
@@ -75,16 +75,16 @@ public class FindLongestUnRepeatArraySegment {
 
         int maxLength = 0;
 
-        while(right < chars.length){
-            if(!set.contains(chars[right])){
+        while (right < chars.length) {
+            if (!set.contains(chars[right])) {
                 set.add(chars[right]);
                 right++;
-            }else{
-                maxLength = Math.max(maxLength,right-left);
+            } else {
+                maxLength = Math.max(maxLength, right - left);
                 set.remove(chars[left++]);
             }
         }
-        maxLength = Math.max(maxLength,right - left);
+        maxLength = Math.max(maxLength, right - left);
         return maxLength;
     }
 }

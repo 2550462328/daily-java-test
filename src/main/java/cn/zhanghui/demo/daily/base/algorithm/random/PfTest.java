@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * @version 1.0
  * @className PfTest
  * @description HyperLogLog算法的测试实验
- *              使用概率学解决基数统计问题
+ * 使用概率学解决基数统计问题
  * @date 2020/8/19
  */
 public class PfTest {
@@ -65,9 +65,9 @@ public class PfTest {
         public double estimate() {
             double submitsInverse = 0.0;
             for (BitKeeper keeper : keepers) {
-                submitsInverse += 1.0 / (float)keeper.maxBit;
+                submitsInverse += 1.0 / (float) keeper.maxBit;
             }
-            double avgBits = (float)keepers.length / submitsInverse;
+            double avgBits = (float) keepers.length / submitsInverse;
             return Math.pow(2, avgBits) * this.k;
         }
 

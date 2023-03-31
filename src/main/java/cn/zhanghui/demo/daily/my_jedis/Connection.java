@@ -11,10 +11,9 @@ import java.net.Socket;
  * @author ZhangHui
  * @version 1.0
  * @className Connect
- * @description
- *  连接类
- *  在这里进行创建连接并处理IO请求，用inputStream进行数据回显，
- *  提供OutputStream给协议层，以便让其给服务端发送命令
+ * @description 连接类
+ * 在这里进行创建连接并处理IO请求，用inputStream进行数据回显，
+ * 提供OutputStream给协议层，以便让其给服务端发送命令
  * @date 2020/8/20
  */
 public class Connection {
@@ -48,8 +47,8 @@ public class Connection {
         }
     }
 
-    private void disConnect(){
-        if(socket != null){
+    private void disConnect() {
+        if (socket != null) {
             try {
                 outputStream.flush();
                 socket.close();
@@ -61,7 +60,7 @@ public class Connection {
         }
     }
 
-    public void close(){
+    public void close() {
         disConnect();
     }
 

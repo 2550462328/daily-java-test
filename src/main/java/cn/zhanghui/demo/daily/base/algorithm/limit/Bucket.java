@@ -33,26 +33,26 @@ public class Bucket {
 
     /**
      * 功能描述
-     * 
-     * @author 向桶中提交数据
-     * @date 2019/7/9
+     *
      * @param data
      * @return
+     * @author 向桶中提交数据
+     * @date 2019/7/9
      */
-    public void submit(Integer data){
-        if(offerMonitor.enterIf(new Monitor.Guard(offerMonitor) {
+    public void submit(Integer data) {
+        if (offerMonitor.enterIf(new Monitor.Guard(offerMonitor) {
             @Override
             public boolean isSatisfied() {
                 return container.size() < BUCKET_LIMIT;
             }
-        })){
+        })) {
             try {
                 container.offer(data);
                 System.out.println(Thread.currentThread().getName() + "is submiting data" + " container size is " + container.size());
             } finally {
                 offerMonitor.leave();
             }
-        }else{
+        } else {
             //这里时候采用降级策略了。消费速度跟不上产生速度时，而且桶满了，抛出异常
             //或者存入MQ DB等后续处理
             throw new IllegalStateException(Thread.currentThread().getName() + "The bucket is full Please latter try again");
@@ -61,17 +61,18 @@ public class Bucket {
 
     /**
      * 从桶中取走数据
+     *
+     * @return java.lang.Integer
      * @author ZhangHui
      * @date 2019/7/9
-     * @return java.lang.Integer
      */
-    public void takeThenConsumer(Consumer<Integer>consumer){
-        if(pollMonitor.enterIf(new Monitor.Guard(pollMonitor) {
+    public void takeThenConsumer(Consumer<Integer> consumer) {
+        if (pollMonitor.enterIf(new Monitor.Guard(pollMonitor) {
             @Override
             public boolean isSatisfied() {
                 return !container.isEmpty();
             }
-        })){
+        })) {
             try {
                 System.out.println(Thread.currentThread().getName() + "is waiting " + consumerRate.acquire());
                 Integer data = container.poll();
@@ -80,7 +81,7 @@ public class Bucket {
             } finally {
                 pollMonitor.leave();
             }
-        }else{
+        } else {
             System.out.println(Thread.currentThread().getName() + "will consume data from MQ...");
             try {
                 TimeUnit.SECONDS.sleep(10);
@@ -125,7 +126,7 @@ public class Bucket {
                     () -> {
                         for (; ; ) {
                             bucket.takeThenConsumer(x -> {
-                                System.out.println(Thread.currentThread().getName() +  "is consuming");
+                                System.out.println(Thread.currentThread().getName() + "is consuming");
                             });
                         }
                     }

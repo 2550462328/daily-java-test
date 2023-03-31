@@ -73,6 +73,6 @@ public class StringMatch {
         Scanner sc = new Scanner(System.in);
         String p = sc.next();
         String s = sc.next();
-        System.out.println(match(s,  p, true));
+        System.out.println(match(s, p, true));
     }
 }

@@ -43,7 +43,7 @@ public class MinStack {
     }
 
     public void pop() {
-        if(root != null){
+        if (root != null) {
             root = root.next;
         }
     }
@@ -56,7 +56,7 @@ public class MinStack {
 
         Node dump = root;
 
-        if(root == null) return 0;
+        if (root == null) return 0;
 
         int min = dump.value;
 

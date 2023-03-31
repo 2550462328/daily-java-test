@@ -22,14 +22,15 @@ public class WebCrawl {
         WebCrawl webCrawl = new WebCrawl();
         webCrawl.crawl(urlList);
     }
+
     //  开始执行爬虫
-    public void crawl(List<String> urlList){
+    public void crawl(List<String> urlList) {
         urlList.stream()
                 .map(FunctionCheck.unchecked(urlStr -> new URL(urlStr)))
                 .forEach(ConsumerCheck.uncheck(url -> save(url)));
     }
 
-    public void save(URL url) throws IOException{
+    public void save(URL url) throws IOException {
         String uuid = UUID.randomUUID().toString();
         InputStream is = url.openConnection().getInputStream();
         Files.copy(is, Paths.get(uuid + ".txt"), StandardCopyOption.REPLACE_EXISTING);

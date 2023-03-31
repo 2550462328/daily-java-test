@@ -13,8 +13,8 @@ public class Main {
         IntelligentControl iControl = new IntelligentControl(20);
 
         //给我们的智能遥控器安装功能
-        iControl.setCommand(1,new AirCommand(new AirConditional()));
-        iControl.setCommand(2,new TelCommand((new Television())));
+        iControl.setCommand(1, new AirCommand(new AirConditional()));
+        iControl.setCommand(2, new TelCommand((new Television())));
 
         //现在打开它们
         iControl.onButton(1);

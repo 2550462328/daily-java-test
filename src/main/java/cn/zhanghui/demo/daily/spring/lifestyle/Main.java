@@ -20,13 +20,13 @@ public class Main {
 
         System.out.println("Spring容器初始化成功，User该Bean已可正常使用");
 
-        User user = applicationContext.getBean("user",User.class);
+        User user = applicationContext.getBean("user", User.class);
 
         System.out.println(user.getName() + "---" + user.getUserPwd());
 
         System.out.println("现在关闭Spring容器，销毁Bean");
 
-        ((ClassPathXmlApplicationContext)applicationContext).registerShutdownHook();
+        ((ClassPathXmlApplicationContext) applicationContext).registerShutdownHook();
 
 //        接下来演示User这个Bean加载到Spring中的生命周期;
 //

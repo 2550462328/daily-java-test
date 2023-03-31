@@ -11,10 +11,11 @@ public abstract class MealBuilder {
 
     public Meal meal = new Meal();
 
-    public abstract  Meal buildFood();
-    public abstract  Meal buildMeal();
+    public abstract Meal buildFood();
 
-    public Meal getResult(){
+    public abstract Meal buildMeal();
+
+    public Meal getResult() {
         return this.meal;
     }
 

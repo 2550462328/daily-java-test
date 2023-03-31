@@ -11,9 +11,9 @@ public class ProjectManager extends Handler {
 
     @Override
     protected void handleRequest(int price) {
-        if(Math.min(500,price) == price){
+        if (Math.min(500, price) == price) {
             System.out.println("项目经理审批通过~");
-        }else{
+        } else {
             Handler handler = this.getSuccessor();
             handler.handleRequest(price);
         }

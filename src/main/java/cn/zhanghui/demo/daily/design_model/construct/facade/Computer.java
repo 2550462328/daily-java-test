@@ -13,7 +13,7 @@ public class Computer implements Function {
     private Disk disk;
     private Memory memory;
 
-    public Computer(){
+    public Computer() {
         cpu = new CPU();
         disk = new Disk();
         memory = new Memory();

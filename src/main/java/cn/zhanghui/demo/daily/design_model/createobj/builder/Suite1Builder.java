@@ -16,6 +16,6 @@ public class Suite1Builder extends MealBuilder {
 
     @Override
     public Meal buildMeal() {
-        return  super.meal.setDrink("大杯可乐");
+        return super.meal.setDrink("大杯可乐");
     }
 }

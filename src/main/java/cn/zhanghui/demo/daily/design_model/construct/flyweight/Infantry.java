@@ -5,7 +5,7 @@ package cn.zhanghui.demo.daily.design_model.construct.flyweight;
  * @version 1.0
  * @className Infantry
  * @description 享元模式的具体享元类
- *              这是一个步兵，这是可以重复建造的单位
+ * 这是一个步兵，这是可以重复建造的单位
  * @date 2020/6/23
  */
 public class Infantry implements Soldier {
@@ -16,7 +16,7 @@ public class Infantry implements Soldier {
 
     private String flight;
 
-    public Infantry(String name){
+    public Infantry(String name) {
         this.name = name;
     }
 

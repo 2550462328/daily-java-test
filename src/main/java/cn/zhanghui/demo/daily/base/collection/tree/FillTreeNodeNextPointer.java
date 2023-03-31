@@ -51,6 +51,7 @@ public class FillTreeNodeNextPointer {
 
     /**
      * 使用队列进行层次遍历
+     *
      * @param root
      * @return
      */
@@ -90,12 +91,13 @@ public class FillTreeNodeNextPointer {
 
     /**
      * 使用动态规划 将Tree转换成二维数组
+     *
      * @param root
      * @return
      */
     public Node connectByRecursive(Node root) {
 
-        if(root == null){
+        if (root == null) {
             return root;
         }
         int h = getTreeHeight(root);
@@ -103,16 +105,16 @@ public class FillTreeNodeNextPointer {
         Node[][] dp = new Node[h + 1][1 << h];
         dp[0][0] = root;
         for (int i = 1; i < h + 1; i++) {
-            for (int j = (1 << i) -1; j >= 0; j--) {
+            for (int j = (1 << i) - 1; j >= 0; j--) {
                 if ((j & 1) == 0) {
                     dp[i][j] = dp[i - 1][j / 2].left;
                 } else {
                     dp[i][j] = dp[i - 1][j / 2].right;
                 }
-                if(j + 1 >= 1 << i){
+                if (j + 1 >= 1 << i) {
                     dp[i][j].next = null;
-                }else{
-                    dp[i][j].next = dp[i][j+1];
+                } else {
+                    dp[i][j].next = dp[i][j + 1];
                 }
             }
         }
@@ -133,25 +135,26 @@ public class FillTreeNodeNextPointer {
     /**
      * 逻辑上对节点分配next节点
      * 左节点的next指向右节点 右节点的next指向父节点next节点的左节点
+     *
      * @param root
      * @return
      */
     public Node connect(Node root) {
-        if(root == null){
+        if (root == null) {
             return root;
         }
 
         Node farLeft = root;
 
-        while(farLeft.left != null){
+        while (farLeft.left != null) {
 
             Node head = farLeft;
 
-            while(head != null){
+            while (head != null) {
 
                 head.left.next = head.right;
 
-                if(head.next != null){
+                if (head.next != null) {
                     head.right.next = head.next.left;
                 }
                 head = head.next;

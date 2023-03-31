@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  */
 public class Order {
 
-    private EnumSet<OrderStatus> unFinishedStatus = EnumSet.of(OrderStatus.Created,OrderStatus.Payed);
+    private EnumSet<OrderStatus> unFinishedStatus = EnumSet.of(OrderStatus.Created, OrderStatus.Payed);
 
     private OrderStatus orderStatus;
 
@@ -81,19 +81,21 @@ public class Order {
 
     /**
      * 获取列表中订单状态不重复的元素个数
+     *
      * @param orderList
      * @return int
      */
-    public int getUnFinishedOrderSize(List<Order> orderList){
+    public int getUnFinishedOrderSize(List<Order> orderList) {
         return orderList.stream().filter(order -> unFinishedStatus.contains(order.orderStatus)).collect(Collectors.toList()).size();
     }
 
     /**
      * 将列表中的元素根据订单状态进行分类
+     *
      * @param orderList
-     * @return java.util.EnumMap<cn.zhanghui.demo.daily.base.enums.Order.OrderStatus,java.util.List<cn.zhanghui.demo.daily.base.enums.Order>>
+     * @return java.util.EnumMap<cn.zhanghui.demo.daily.base.enums.Order.OrderStatus, java.util.List < cn.zhanghui.demo.daily.base.enums.Order>>
      */
-    public EnumMap<OrderStatus,List<Order>> seperateOrderByStatus(List<Order> orderList){
+    public EnumMap<OrderStatus, List<Order>> seperateOrderByStatus(List<Order> orderList) {
 //        EnumMap<OrderStatus,List<Order>> enumMap = new EnumMap<OrderStatus, List<Order>>(OrderStatus.class);
 //        for(Order order: orderList){
 //            if(enumMap.containsKey(order.getOrderStatus())){
@@ -106,7 +108,7 @@ public class Order {
 //        }
 //        return enumMap;
         //上述简化成下面
-        EnumMap<OrderStatus,List<Order>> enumMap = orderList.stream().collect(Collectors.groupingBy(Order::getOrderStatus,()->new EnumMap<>(OrderStatus.class),Collectors.toList()));
+        EnumMap<OrderStatus, List<Order>> enumMap = orderList.stream().collect(Collectors.groupingBy(Order::getOrderStatus, () -> new EnumMap<>(OrderStatus.class), Collectors.toList()));
         return enumMap;
     }
 

@@ -6,7 +6,7 @@ import java.util.function.Function;
 public interface FunctionCheck<T, R, E extends Throwable> {
     R apply(T t) throws E;
 
-    static <T, R, E extends Throwable> Function<T, R>  unchecked(FunctionCheck<T, R, E> f){
+    static <T, R, E extends Throwable> Function<T, R> unchecked(FunctionCheck<T, R, E> f) {
         return t -> {
             try {
                 return f.apply(t);

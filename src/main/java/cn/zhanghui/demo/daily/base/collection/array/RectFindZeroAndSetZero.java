@@ -34,13 +34,13 @@ import java.util.*;
 public class RectFindZeroAndSetZero {
 
     public static void main(String[] args) {
-        int[][] matrix = {{1,1,1},{1,0,1},{1,1,1}};
+        int[][] matrix = {{1, 1, 1}, {1, 0, 1}, {1, 1, 1}};
 //        new RectFindZeroAndSetZero().setZeroes_violent(matrix);
 //        for(int i = 0; i < matrix.length; i++){
 //            System.out.println(Arrays.toString(matrix[i]));
 //        }
         new RectFindZeroAndSetZero().setZeroes_transfer(matrix);
-        for(int i = 0; i < matrix.length; i++){
+        for (int i = 0; i < matrix.length; i++) {
             System.out.println(Arrays.toString(matrix[i]));
         }
     }
@@ -49,7 +49,7 @@ public class RectFindZeroAndSetZero {
      * 暴力标记置零法
      * 有个缺点在于我们需要额外的空间去存储元素零的所在的行和列
      * 我们可以不使用额外空间，直接在元素所在的行首和队首置为0，一种特殊的标记方式
-     *
+     * <p>
      * 还有一种思路是在双重循环的时候就进行置零操作，不过需要对零进行区分，是自带的零还是人为置零，需要一个数组去存储状态
      */
     public void setZeroes_violent(int[][] matrix) {

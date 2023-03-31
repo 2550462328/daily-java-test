@@ -5,16 +5,17 @@
     <bean id="beanPostProcessor" class="cn.zhanghui.demo.daily.spring.lifestyle.MyBeanPostProcessor">
     </bean>
 
-    <bean id="instantiationAwareBeanPostProcessor" class="cn.zhanghui.demo.daily.spring.lifestyle.MyInstantiationAwareBeanPostProcessor">
+    <bean id="instantiationAwareBeanPostProcessor"
+          class="cn.zhanghui.demo.daily.spring.lifestyle.MyInstantiationAwareBeanPostProcessor">
     </bean>
 
     <bean id="beanFactoryPostProcessor" class="cn.zhanghui.demo.daily.spring.lifestyle.MyBeanFactoryPostProcessor">
     </bean>
 
     <!--<bean id="user" class="cn.zhanghui.demo.daily.spring.lifestyle.User" init-method="myInit"-->
-          <!--destroy-method="myDestory" scope="singleton">-->
-        <!--<property name="name" value="zhanghui" />-->
-        <!--<property name="userPwd" value="zhanghui123" />-->
+    <!--destroy-method="myDestory" scope="singleton">-->
+    <!--<property name="name" value="zhanghui" />-->
+    <!--<property name="userPwd" value="zhanghui123" />-->
     <!--</bean>-->
     <bean id="user" class="cn.zhanghui.demo.daily.spring.lifestyle.User" init-method="myInit"
           destroy-method="myDestory" scope="singleton">

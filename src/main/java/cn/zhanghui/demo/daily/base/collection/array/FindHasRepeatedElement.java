@@ -17,7 +17,7 @@ public class FindHasRepeatedElement {
     public static void main(String[] args) {
         FindHasRepeatedElement findHasRepeatedElement = new FindHasRepeatedElement();
 
-        int[] nums = {1,1,2,3};
+        int[] nums = {1, 1, 2, 3};
 
         System.out.println(findHasRepeatedElement.containsDuplicateHashSet(nums));
     }
@@ -28,13 +28,13 @@ public class FindHasRepeatedElement {
      */
     public boolean containsDuplicateViolent(int[] nums) {
         int len;
-        if(nums == null || (len = nums.length) == 0){
+        if (nums == null || (len = nums.length) == 0) {
             return false;
         }
 
-        for(int i = 0; i < len - 1; i++){
-            for(int j = i + 1; j < len; j++){
-                if(nums[i] == nums[j]){
+        for (int i = 0; i < len - 1; i++) {
+            for (int j = i + 1; j < len; j++) {
+                if (nums[i] == nums[j]) {
                     return true;
                 }
             }
@@ -43,19 +43,20 @@ public class FindHasRepeatedElement {
         return false;
     }
 
-    /** 效率最高
+    /**
+     * 效率最高
      * 对原数组进行排序，这样相同的元素就会相邻
      */
     public boolean containsDuplicateSort(int[] nums) {
         int len;
-        if(nums == null || (len = nums.length) == 0){
+        if (nums == null || (len = nums.length) == 0) {
             return false;
         }
 
         Arrays.sort(nums);
 
-        for(int i = 0; i < len - 1; i++){
-            if(nums[i] == nums[i+1]){
+        for (int i = 0; i < len - 1; i++) {
+            if (nums[i] == nums[i + 1]) {
                 return true;
             }
         }
@@ -67,7 +68,7 @@ public class FindHasRepeatedElement {
      */
     public boolean containsDuplicateHashSet(int[] nums) {
         int len;
-        if(nums == null || (len = nums.length) == 0){
+        if (nums == null || (len = nums.length) == 0) {
             return false;
         }
 
@@ -75,7 +76,7 @@ public class FindHasRepeatedElement {
 
         int i = 0;
 
-        while(i < len && numsSet.size() == i){
+        while (i < len && numsSet.size() == i) {
             numsSet.add(nums[i++]);
         }
 
@@ -89,14 +90,14 @@ public class FindHasRepeatedElement {
      */
     public boolean containsDuplicateArray(int[] nums) {
         int len;
-        if(nums == null || (len = nums.length) == 0){
+        if (nums == null || (len = nums.length) == 0) {
             return false;
         }
 
         int[] tempArray = new int[10];
 
-        for(int i = 0; i < len; i++){
-            if(++tempArray[nums[i]] > 1){
+        for (int i = 0; i < len; i++) {
+            if (++tempArray[nums[i]] > 1) {
                 return true;
             }
         }

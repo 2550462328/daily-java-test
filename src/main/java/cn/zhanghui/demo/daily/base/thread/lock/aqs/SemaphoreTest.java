@@ -14,10 +14,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class SemaphoreTest {
 
-    private Semaphore semaphore = new Semaphore(3,true);
+    private Semaphore semaphore = new Semaphore(3, true);
 
     private ThreadPoolExecutor threadPool =
-        new ThreadPoolExecutor(100, 1000, 1, TimeUnit.SECONDS, new LinkedBlockingQueue<>(1000));
+            new ThreadPoolExecutor(100, 1000, 1, TimeUnit.SECONDS, new LinkedBlockingQueue<>(1000));
 
     public static void main(String[] args) {
         new SemaphoreTest().doPark();
@@ -27,7 +27,7 @@ public class SemaphoreTest {
         for (int i = 0; i < 100; i++) {
             threadPool.execute(() -> {
                 String threadName = Thread.currentThread().getName();
-                if("pool-1-thread-99".equals(threadName)){
+                if ("pool-1-thread-99".equals(threadName)) {
                     System.out.println("semaphore.getQueueLength() = " + semaphore.getQueueLength());
                     System.out.println("semaphore.hasQueuedThreads() = " + semaphore.hasQueuedThreads());
                     System.out.println("semaphore.availablePermits() = " + semaphore.availablePermits());

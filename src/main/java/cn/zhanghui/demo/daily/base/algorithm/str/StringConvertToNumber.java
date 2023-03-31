@@ -59,12 +59,12 @@ public class StringConvertToNumber {
             if (!zeroStart && sb.length() == 0) {
                 if (c == '+' || c == '-' || (Character.isDigit(c) && c > '0')) {
                     sb.append(c);
-                    if((Character.isDigit(c) && c > '0')){
+                    if ((Character.isDigit(c) && c > '0')) {
                         hasNotZero = true;
                     }
-                } else if(c == '0'){
+                } else if (c == '0') {
                     zeroStart = true;
-                }else if (c != ' ' && c != '0') {
+                } else if (c != ' ' && c != '0') {
                     return 0;
                 }
             } else if (Character.isDigit(c)) {
@@ -81,7 +81,7 @@ public class StringConvertToNumber {
                         }
                     }
                 }
-            }else{
+            } else {
                 break;
             }
             i++;
@@ -89,7 +89,7 @@ public class StringConvertToNumber {
 
         String sbString = sb.toString();
 
-        if(sbString.length() == 0 ||"+".equals(sbString) || "-".equals(sbString)){
+        if (sbString.length() == 0 || "+".equals(sbString) || "-".equals(sbString)) {
             return 0;
         }
 

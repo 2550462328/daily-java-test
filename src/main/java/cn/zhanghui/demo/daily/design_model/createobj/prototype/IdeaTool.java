@@ -15,10 +15,10 @@ public class IdeaTool implements Tool {
 
     @Override
     public Tool getClone() {
-       IdeaTool tool = null;
+        IdeaTool tool = null;
 
         try {
-            tool = (IdeaTool)clone();
+            tool = (IdeaTool) clone();
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }

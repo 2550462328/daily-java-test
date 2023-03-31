@@ -21,7 +21,7 @@ public class LongestUnRepeatTest {
         }
 
         Map<Character, Integer> tempMap = new HashMap();
-        int l = 0, r = 0,max = 0;
+        int l = 0, r = 0, max = 0;
 //        int  maxl = 0, maxr = 0;
         char[] targetChars = target.toCharArray();
         int tLen = targetChars.length;
@@ -54,11 +54,11 @@ public class LongestUnRepeatTest {
 
         int[] lastIndex = new int[128];
 
-        for(int i = 0; i < 128; i++){
+        for (int i = 0; i < 128; i++) {
             lastIndex[i] = -1;
         }
 
-        int l = 0, r = 0,maxLen = 0;
+        int l = 0, r = 0, maxLen = 0;
 //        int  maxl = 0, maxr = 0;
         int tLen = target.length();
 
@@ -66,9 +66,9 @@ public class LongestUnRepeatTest {
 
             char currVal = target.charAt(r);
 
-            l = Math.max(l,lastIndex[currVal]);
+            l = Math.max(l, lastIndex[currVal]);
 
-            maxLen = Math.max(maxLen,r -l);
+            maxLen = Math.max(maxLen, r - l);
 
 //            if(maxLen == (r -l + 1)){
 //                maxl = l;

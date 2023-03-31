@@ -7,11 +7,10 @@ import java.util.*;
  * @version 1.0
  * @className FindTwoArrayCommonElements
  * @description 给定两个数组，编写一个函数来计算它们的交集。
- *
+ * <p>
  * 示例 1：
  * 输入：nums1 = [1,2,2,1], nums2 = [2,2]
  * 输出：[2,2]
- *
  * @date 2020/9/2
  */
 public class FindTwoArrayCommonElements {
@@ -19,10 +18,10 @@ public class FindTwoArrayCommonElements {
     public static void main(String[] args) {
         FindTwoArrayCommonElements findTwoArrayCommonElements = new FindTwoArrayCommonElements();
 
-        int[] nums1 = {1,2,2,1};
-        int[] nums2 = {2,2};
+        int[] nums1 = {1, 2, 2, 1};
+        int[] nums2 = {2, 2};
 
-        System.out.println(Arrays.toString(findTwoArrayCommonElements.intersectSortAndTwoPointer(nums1,nums2)));
+        System.out.println(Arrays.toString(findTwoArrayCommonElements.intersectSortAndTwoPointer(nums1, nums2)));
     }
 
     /**
@@ -35,17 +34,17 @@ public class FindTwoArrayCommonElements {
         int len1 = nums1.length;
         int len2 = nums2.length;
 
-        if(len1 > len2){
-            return intersectArrayList(nums2,nums1);
+        if (len1 > len2) {
+            return intersectArrayList(nums2, nums1);
         }
 
-        if(len1 == 0 || len2 == 0){
+        if (len1 == 0 || len2 == 0) {
             return new int[0];
         }
 
         List arrayList = new ArrayList(len1);
 
-        for(int i : nums1){
+        for (int i : nums1) {
             arrayList.add(i);
         }
 
@@ -53,13 +52,13 @@ public class FindTwoArrayCommonElements {
 
         int index = 0;
 
-        for(int i = 0; i < len2; i++){
-            if(arrayList.contains(nums2[i])){
+        for (int i = 0; i < len2; i++) {
+            if (arrayList.contains(nums2[i])) {
                 result[index++] = nums2[i];
-                arrayList.remove((Integer)nums2[i]);
+                arrayList.remove((Integer) nums2[i]);
             }
         }
-        return Arrays.copyOfRange(result,0,index);
+        return Arrays.copyOfRange(result, 0, index);
     }
 
     /**
@@ -72,33 +71,33 @@ public class FindTwoArrayCommonElements {
         int len1 = nums1.length;
         int len2 = nums2.length;
 
-        if(len1 > len2){
-            return intersectHashMap(nums2,nums1);
+        if (len1 > len2) {
+            return intersectHashMap(nums2, nums1);
         }
 
-        if(len1 == 0 || len2 == 0){
+        if (len1 == 0 || len2 == 0) {
             return new int[0];
         }
 
         Map<Integer, Integer> hashMap = new HashMap<>(len1);
 
-        for(int i : nums1){
-            int count = hashMap.getOrDefault(i,0) + 1;
-            hashMap.put(i,count);
+        for (int i : nums1) {
+            int count = hashMap.getOrDefault(i, 0) + 1;
+            hashMap.put(i, count);
         }
 
         int[] result = new int[len1];
 
         int index = 0;
 
-        for(int i = 0; i < len2; i++){
-            int count = hashMap.getOrDefault(nums2[i],0);
-            if(count > 0){
+        for (int i = 0; i < len2; i++) {
+            int count = hashMap.getOrDefault(nums2[i], 0);
+            if (count > 0) {
                 result[index++] = nums2[i];
-                hashMap.put(nums2[i],--count);
+                hashMap.put(nums2[i], --count);
             }
         }
-        return Arrays.copyOfRange(result,0,index);
+        return Arrays.copyOfRange(result, 0, index);
     }
 
     /**
@@ -113,12 +112,12 @@ public class FindTwoArrayCommonElements {
         int len1 = nums1.length;
         int len2 = nums2.length;
 
-        if(len1 == 0 || len2 == 0){
+        if (len1 == 0 || len2 == 0) {
             return new int[0];
         }
 
-        if(len1 > len2){
-            return intersectSortAndTwoPointer(nums2,nums1);
+        if (len1 > len2) {
+            return intersectSortAndTwoPointer(nums2, nums1);
         }
 
         int[] result = new int[len1];
@@ -129,18 +128,18 @@ public class FindTwoArrayCommonElements {
 
         int p1 = 0, p2 = 0;
 
-        while(p1 < len1 && p2 < len2){
-            if(nums1[p1] > nums2[p2]){
-                p2 ++;
-            }else if(nums1[p1] < nums2[p2]){
+        while (p1 < len1 && p2 < len2) {
+            if (nums1[p1] > nums2[p2]) {
+                p2++;
+            } else if (nums1[p1] < nums2[p2]) {
                 p1++;
-            }else{
+            } else {
                 result[index++] = nums1[p1];
                 p1++;
                 p2++;
             }
         }
 
-        return Arrays.copyOfRange(result,0,index);
+        return Arrays.copyOfRange(result, 0, index);
     }
 }

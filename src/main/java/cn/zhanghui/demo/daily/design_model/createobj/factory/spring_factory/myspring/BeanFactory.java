@@ -7,5 +7,5 @@ package cn.zhanghui.demo.daily.design_model.createobj.factory.spring_factory.mys
  * @date: 2019年10月14日 上午9:51:21
  */
 public interface BeanFactory {
-	Object getBean(String name);
+    Object getBean(String name);
 }

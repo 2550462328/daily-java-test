@@ -30,11 +30,11 @@ public class RemoveLinkNode {
     public static void main(String[] args) {
         RemoveLinkNode removeLinkNode = new RemoveLinkNode();
 
-        removeLinkNode.removeNthFromEndMap(head,1);
+        removeLinkNode.removeNthFromEndMap(head, 1);
 
         ListNode temp = head;
 
-        while(temp != null){
+        while (temp != null) {
             System.out.println(temp.val);
             temp = temp.next;
         }
@@ -42,32 +42,33 @@ public class RemoveLinkNode {
 
     /**
      * 使用HashMap来计算倒数第n个数
+     *
      * @author ZhangHui
      * @date 2020/9/18
      */
     public ListNode removeNthFromEndMap(ListNode head, int n) {
 
-        Map<Integer,ListNode> map = new HashMap<>();
+        Map<Integer, ListNode> map = new HashMap<>();
 
         ListNode temp = head;
 
         int index = 0;
 
-        while(head != null){
-            map.put(index++,head);
+        while (head != null) {
+            map.put(index++, head);
             head = head.next;
         }
 
         ListNode node = map.get(map.size() - n);
 
-        if(node.next != null){
+        if (node.next != null) {
             node.val = node.next.val;
             node.next = node.next.next;
-        }else{
+        } else {
             ListNode preNode = map.get(map.size() - n - 1);
-            if(preNode == null){
+            if (preNode == null) {
                 temp = null;
-            }else{
+            } else {
                 preNode.next = null;
             }
         }
@@ -91,7 +92,7 @@ public class RemoveLinkNode {
             nextNNode = nextNNode.next;
         }
 
-        while(nextNNode != null){
+        while (nextNNode != null) {
             preNNode = preNNode.next;
             nextNNode = nextNNode.next;
         }

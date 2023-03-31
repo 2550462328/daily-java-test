@@ -7,5 +7,5 @@ package cn.zhanghui.demo.daily.design_model.createobj.factory.abstract_facrory;
  * @date: 2019年10月14日 上午9:32:43
  */
 public abstract class Abstract_Play {
-	public abstract void play();
+    public abstract void play();
 }

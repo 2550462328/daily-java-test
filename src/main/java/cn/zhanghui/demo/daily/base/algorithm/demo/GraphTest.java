@@ -54,21 +54,21 @@ public class GraphTest {
     }
 
 
-    private void test(){
-        GraphNode node1 = new GraphNode("node1",10);
+    private void test() {
+        GraphNode node1 = new GraphNode("node1", 10);
 
-        GraphNode node21 = new GraphNode("node21",10);
-        GraphNode node22 = new GraphNode("node22",10);
-        GraphNode node23 = new GraphNode("node23",10);
+        GraphNode node21 = new GraphNode("node21", 10);
+        GraphNode node22 = new GraphNode("node22", 10);
+        GraphNode node23 = new GraphNode("node23", 10);
 
         List<GraphNode> node2List = new ArrayList<>();
         node2List.add(node21);
         node2List.add(node22);
         node2List.add(node23);
 
-        GraphNode node31 = new GraphNode("node31",10);
-        GraphNode node32 = new GraphNode("node32",10);
-        GraphNode node33 = new GraphNode("node33",10);
+        GraphNode node31 = new GraphNode("node31", 10);
+        GraphNode node32 = new GraphNode("node32", 10);
+        GraphNode node33 = new GraphNode("node33", 10);
         List<GraphNode> node3List = new ArrayList<>();
         node3List.add(node31);
         node3List.add(node32);
@@ -76,9 +76,9 @@ public class GraphTest {
         node3List.add(node22);
 
         node23.childrenNode = node3List;
-        node1.childrenNode =node2List;
+        node1.childrenNode = node2List;
 
-        System.out.println(findByTimes(2,node1));
+        System.out.println(findByTimes(2, node1));
 
     }
 

@@ -6,16 +6,19 @@ public class LongAdderDebug extends Striped64Debug implements Serializable {
     private static final long serialVersionUID = 7249069246863182397L;
 
     public LongAdderDebug() {
-    	
+
     }
 
     public void add(long x) {
-        Cell[] as; long b, v; int m; Cell a;
+        Cell[] as;
+        long b, v;
+        int m;
+        Cell a;
         if ((as = cells) != null || !casBase(b = base, b + x)) {
             boolean uncontended = true;
             if (as == null || (m = as.length - 1) < 0 ||
-                (a = as[getProbe() & m]) == null ||
-                !(uncontended = a.cas(v = a.value, v + x)))
+                    (a = as[getProbe() & m]) == null ||
+                    !(uncontended = a.cas(v = a.value, v + x)))
                 longAccumulate(x, null, uncontended);
         }
     }
@@ -38,7 +41,8 @@ public class LongAdderDebug extends Striped64Debug implements Serializable {
      * @return the sum
      */
     public long sum() {
-        Cell[] as = cells; Cell a;
+        Cell[] as = cells;
+        Cell a;
         long sum = base;
         if (as != null) {
             for (int i = 0; i < as.length; ++i) {
@@ -57,7 +61,8 @@ public class LongAdderDebug extends Striped64Debug implements Serializable {
      * known that no threads are concurrently updating.
      */
     public void reset() {
-        Cell[] as = cells; Cell a;
+        Cell[] as = cells;
+        Cell a;
         base = 0L;
         if (as != null) {
             for (int i = 0; i < as.length; ++i) {
@@ -78,7 +83,8 @@ public class LongAdderDebug extends Striped64Debug implements Serializable {
      * @return the sum
      */
     public long sumThenReset() {
-        Cell[] as = cells; Cell a;
+        Cell[] as = cells;
+        Cell a;
         long sum = base;
         base = 0L;
         if (as != null) {
@@ -94,6 +100,7 @@ public class LongAdderDebug extends Striped64Debug implements Serializable {
 
     /**
      * Returns the String representation of the {@link #sum}.
+     *
      * @return the String representation of the {@link #sum}
      */
     public String toString() {
@@ -114,7 +121,7 @@ public class LongAdderDebug extends Striped64Debug implements Serializable {
      * primitive conversion.
      */
     public int intValue() {
-        return (int)sum();
+        return (int) sum();
     }
 
     /**
@@ -122,7 +129,7 @@ public class LongAdderDebug extends Striped64Debug implements Serializable {
      * after a widening primitive conversion.
      */
     public float floatValue() {
-        return (float)sum();
+        return (float) sum();
     }
 
     /**
@@ -130,12 +137,13 @@ public class LongAdderDebug extends Striped64Debug implements Serializable {
      * primitive conversion.
      */
     public double doubleValue() {
-        return (double)sum();
+        return (double) sum();
     }
 
     /**
      * Serialization proxy, used to avoid reference to the non-public
      * Striped64 superclass in serialized forms.
+     *
      * @serial include
      */
     private static class SerializationProxy implements Serializable {
@@ -143,6 +151,7 @@ public class LongAdderDebug extends Striped64Debug implements Serializable {
 
         /**
          * The current value returned by sum().
+         *
          * @serial
          */
         private final long value;
@@ -183,7 +192,7 @@ public class LongAdderDebug extends Striped64Debug implements Serializable {
      * @throws java.io.InvalidObjectException always
      */
     private void readObject(java.io.ObjectInputStream s)
-        throws java.io.InvalidObjectException {
+            throws java.io.InvalidObjectException {
         throw new java.io.InvalidObjectException("Proxy required");
     }
 

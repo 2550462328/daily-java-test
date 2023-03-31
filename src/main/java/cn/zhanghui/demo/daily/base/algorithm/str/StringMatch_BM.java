@@ -5,6 +5,7 @@ import org.springframework.util.StopWatch;
 import java.util.Arrays;
 
 import static cn.zhanghui.demo.daily.base.algorithm.str.StringMatch_KMP.*;
+
 /**
  * @author ZhangHui
  * @version 1.0
@@ -113,12 +114,12 @@ public class StringMatch_BM {
         int m = P.length;
         int n = T.length;
 
-        if(m == 0){
+        if (m == 0) {
             return 0;
         }
 
-        if(n < m){
-            return  -1;
+        if (n < m) {
+            return -1;
         }
 
         // 获取忽略数组
@@ -150,35 +151,35 @@ public class StringMatch_BM {
 
         int[] bmBc = bmBc(pattern.toCharArray());
         System.out.println("坏字符忽略映射：");
-        for(int i =0; i < bmBc.length;i++){
-            if(bmBc[i] != -1){
-                System.out.println("bmBc["+i+"] = " + bmBc[i]);
+        for (int i = 0; i < bmBc.length; i++) {
+            if (bmBc[i] != -1) {
+                System.out.println("bmBc[" + i + "] = " + bmBc[i]);
             }
         }
 
         int[] suffix = suffix(pattern.toCharArray());
         System.out.println("好后缀数组映射：");
-        for(int i =0; i < suffix.length;i++){
-            System.out.println("suffix["+i+"] = " + suffix[i]);
+        for (int i = 0; i < suffix.length; i++) {
+            System.out.println("suffix[" + i + "] = " + suffix[i]);
         }
 
         int[] bmGs = bmGs(pattern.toCharArray());
         System.out.println("好后缀忽略映射：");
-        for(int i =0; i < bmGs.length;i++){
-            System.out.println("bmGs["+i+"] = " + bmGs[i]);
+        for (int i = 0; i < bmGs.length; i++) {
+            System.out.println("bmGs[" + i + "] = " + bmGs[i]);
         }
 
         StopWatch watch = new StopWatch();
         watch.start();
-        System.out.println("BM：\t" + bmSearch(pattern,target));
+        System.out.println("BM：\t" + bmSearch(pattern, target));
         watch.stop();
         System.out.println(watch.getTotalTimeMillis());
         watch.start();
-        System.out.println("KMP:\t" + kmp_compute(pattern,target));
+        System.out.println("KMP:\t" + kmp_compute(pattern, target));
         watch.stop();
         System.out.println(watch.getTotalTimeMillis());
         watch.start();
-        System.out.println("TwoPointer:\t" + violent_compute(pattern,target));
+        System.out.println("TwoPointer:\t" + violent_compute(pattern, target));
         watch.stop();
         System.out.println(watch.getTotalTimeMillis());
         watch.start();
@@ -186,7 +187,7 @@ public class StringMatch_BM {
         watch.stop();
         System.out.println(watch.getTotalTimeMillis());
         watch.start();
-        System.out.println("SubString:\t" + compute_subString(pattern,target));
+        System.out.println("SubString:\t" + compute_subString(pattern, target));
         watch.stop();
         System.out.println(watch.getTotalTimeMillis());
     }

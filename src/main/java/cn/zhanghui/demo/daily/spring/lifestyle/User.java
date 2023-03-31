@@ -40,7 +40,7 @@ public class User implements BeanFactoryAware, BeanNameAware, InitializingBean, 
         this.name = name;
     }
 
-    public User(){
+    public User() {
         System.out.println("User调用构造方法实例化");
     }
 
@@ -65,11 +65,11 @@ public class User implements BeanFactoryAware, BeanNameAware, InitializingBean, 
         System.out.println("[DisposableBean]接口，调用destroy方法，bean销毁后进行一些操作");
     }
 
-    public void myInit(){
+    public void myInit() {
         System.out.println("XML中定义的Bean在初始化时的自定义方法myInit");
     }
 
-    public void myDestory(){
+    public void myDestory() {
         System.out.println("XML中定义的Bean在销毁时的自定义方法myInit");
     }
 }

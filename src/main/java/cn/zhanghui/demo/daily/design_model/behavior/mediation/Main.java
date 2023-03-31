@@ -18,7 +18,7 @@ public class Main {
         iRoom.register(zhangsan);
         iRoom.register(lisi);
 
-        zhangsan.sendMessage("lisi","你麻痹");
-        lisi.sendMessage("zhangsan","草泥马");
+        zhangsan.sendMessage("lisi", "你麻痹");
+        lisi.sendMessage("zhangsan", "草泥马");
     }
 }

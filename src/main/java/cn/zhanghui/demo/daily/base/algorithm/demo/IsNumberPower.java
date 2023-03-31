@@ -1,4 +1,5 @@
 package cn.zhanghui.demo.daily.base.algorithm.demo;
+
 /**
  * 给定一个整数，写一个函数来判断它是否是 3 的幂次方。
  * <p>
@@ -25,8 +26,8 @@ public class IsNumberPower {
 //        System.out.println(Integer.lowestOneBit(10));
 //        System.out.println(Integer.toString(10,3));
 
-        System.out.println(Math.log10(2187)/Math.log10(3));
-        System.out.println(Math.log(2187)/Math.log(3));
+        System.out.println(Math.log10(2187) / Math.log10(3));
+        System.out.println(Math.log(2187) / Math.log(3));
     }
 
     /**
@@ -49,7 +50,7 @@ public class IsNumberPower {
      * 因此只要使用正则判断n的3进制形式就可以了
      */
     public boolean isPowerOfThree_radixexchange(int n) {
-        return Integer.toString(n,3).matches("^10*$");
+        return Integer.toString(n, 3).matches("^10*$");
     }
 
     /**
@@ -58,7 +59,7 @@ public class IsNumberPower {
      */
     public boolean isPowerOfThree_formula(int n) {
         // 基于double带来的误差，比如结果10.0 / 2的结果可能是4.99999或者5.00000001
-        return (Math.log10(n)/Math.log10(3)) % 1 == 0;
+        return (Math.log10(n) / Math.log10(3)) % 1 == 0;
         // 所以替换成这种写法，借助epsilon jdk11引入的常量
 //        return (Math.log10(n)/Math.log10(3) + epsilon) % 1 <= 2* epsilon;
     }

@@ -43,6 +43,7 @@ public class ZigzagLevelOrder {
     /**
      * 使用LinkList，一种既可以做栈又可以做队列的数据结构
      * 借助LinkList两头通的数据结构，在从左向右和从右向左遍历采用不同的方式
+     *
      * @param root
      * @return
      */
@@ -50,7 +51,7 @@ public class ZigzagLevelOrder {
 
         LinkedList<TreeNode> queueOrStack = new LinkedList<>();
 
-        if(root != null) {
+        if (root != null) {
             queueOrStack.add(root);
         }
 
@@ -77,7 +78,7 @@ public class ZigzagLevelOrder {
                     if (currNode.left != null) {
                         queueOrStack.addLast(currNode.left);
                     }
-                  // 从左边进行遍历
+                    // 从左边进行遍历
                 } else {
                     TreeNode currNode = queueOrStack.pollLast();
                     levelList.add(currNode.val);

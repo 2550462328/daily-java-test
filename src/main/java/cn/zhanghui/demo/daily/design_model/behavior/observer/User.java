@@ -23,7 +23,7 @@ public class User implements IUser {
         this.read();
     }
 
-    public void read(){
+    public void read() {
         System.out.println(this.name + "接收到最新消息：" + message);
     }
 }

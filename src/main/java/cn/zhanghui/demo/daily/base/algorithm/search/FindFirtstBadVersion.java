@@ -40,7 +40,7 @@ public class FindFirtstBadVersion {
 
     private int getBadVersion(int start, int end) {
 
-        int mid = start + (end - start)/2;
+        int mid = start + (end - start) / 2;
 
         if (start > end) {
             return index;

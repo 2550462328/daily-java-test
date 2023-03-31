@@ -11,8 +11,9 @@ public abstract class Student {
 
     protected Course course;
 
-    public void setCouse(Course course){
+    public void setCouse(Course course) {
         this.course = course;
     }
-    abstract  void attendCourse();
+
+    abstract void attendCourse();
 }

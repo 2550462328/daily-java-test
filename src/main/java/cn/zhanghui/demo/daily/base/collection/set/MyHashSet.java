@@ -6,16 +6,17 @@ import java.util.TreeSet;
 
 /**
  * 关于HashSet相关类的测试
+ *
+ * @param null
  * @author ZhangHui
  * @date 2020/1/2
- * @param null
  * @return
  */
 public class MyHashSet {
-	
-	public static void main(String[] args) {
-		HashSet<String> hashSet = new HashSet<>();
-		LinkedHashSet linkedHashSet = new LinkedHashSet();
-		TreeSet<String> treeSet = new TreeSet<String>();
-	}
+
+    public static void main(String[] args) {
+        HashSet<String> hashSet = new HashSet<>();
+        LinkedHashSet linkedHashSet = new LinkedHashSet();
+        TreeSet<String> treeSet = new TreeSet<String>();
+    }
 }

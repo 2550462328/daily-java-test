@@ -7,12 +7,11 @@ package cn.zhanghui.demo.daily.base.collection.tree;
  * @description 查找字符串数组的最长公共前缀
  * <p>
  * 提供基于前缀树实现的用例
- *
+ * <p>
  * 此外暴力求解法这里不列举了
- *
+ * <p>
  * 比如横向求解 两两求解公共最大前缀后再和下一个对比
  * 比如纵向求解，依次比较每个字符串第i个字符，不一样即可输出
- *
  * @date 2020/9/16
  */
 public class FindArrayLongestCommonPrefix {

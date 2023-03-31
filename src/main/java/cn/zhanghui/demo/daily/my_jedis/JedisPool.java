@@ -67,7 +67,7 @@ public class JedisPool implements Pool<Jedis> {
                     count.decrementAndGet();
                 }
             }
-            
+
             // 4. 如果连接池满了，则在超时时间内进行等待
             try {
                 jedis = idleWorkQueue.poll(maxIdleTimeMills - (System.currentTimeMillis() - start), TimeUnit.MILLISECONDS);

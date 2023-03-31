@@ -23,7 +23,7 @@ public class JavaSerializer implements Serializer {
     @Override
     public byte[] attributesHashFrom(RedisSession session) throws IOException {
         HashMap<String, Object> attributes = new HashMap<String, Object>();
-        for (Enumeration<String> enumerator = session.getAttributeNames(); enumerator.hasMoreElements();) {
+        for (Enumeration<String> enumerator = session.getAttributeNames(); enumerator.hasMoreElements(); ) {
             String key = enumerator.nextElement();
             attributes.put(key, session.getAttribute(key));
         }
@@ -31,7 +31,7 @@ public class JavaSerializer implements Serializer {
         byte[] serialized = null;
 
         try (ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(bos));) {
+             ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(bos));) {
             oos.writeUnshared(attributes);
             oos.flush();
             serialized = bos.toByteArray();
@@ -51,7 +51,7 @@ public class JavaSerializer implements Serializer {
         byte[] serialized = null;
 
         try (ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(bos));) {
+             ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(bos));) {
             oos.writeObject(metadata);
             session.writeObjectData(oos);
             oos.flush();
@@ -63,10 +63,10 @@ public class JavaSerializer implements Serializer {
 
     @Override
     public void deserializeInto(byte[] data, RedisSession session, SessionSerializationMetadata metadata)
-        throws IOException, ClassNotFoundException {
+            throws IOException, ClassNotFoundException {
         try (BufferedInputStream bis = new BufferedInputStream(new ByteArrayInputStream(data));
-            ObjectInputStream ois = new CustomObjectInputStream(bis, loader);) {
-            SessionSerializationMetadata serializedMetadata = (SessionSerializationMetadata)ois.readObject();
+             ObjectInputStream ois = new CustomObjectInputStream(bis, loader);) {
+            SessionSerializationMetadata serializedMetadata = (SessionSerializationMetadata) ois.readObject();
             metadata.copyFieldsFrom(serializedMetadata);
             session.readObjectData(ois);
         }

@@ -11,17 +11,17 @@ public class Client {
 
     private Connection connection;
 
-    public Client(String host, int port){
-        connection = new Connection(host,port);
+    public Client(String host, int port) {
+        connection = new Connection(host, port);
     }
 
-    public String set(String key, String value){
-        connection.sendCommand(Protocol.Command.SET,key.getBytes(),value.getBytes());
+    public String set(String key, String value) {
+        connection.sendCommand(Protocol.Command.SET, key.getBytes(), value.getBytes());
         return connection.getStatus();
     }
 
-    public String get(String key){
-        connection.sendCommand(Protocol.Command.GET,key.getBytes());
+    public String get(String key) {
+        connection.sendCommand(Protocol.Command.GET, key.getBytes());
         return connection.getStatus();
     }
 
@@ -29,11 +29,11 @@ public class Client {
         connection.sendCommand(Protocol.Command.SET, key.getBytes(), value.getBytes(), nx.getBytes(), ex.getBytes(), String.valueOf(i).getBytes());
     }
 
-    public void append(String key, String value){
-        connection.sendCommand(Protocol.Command.APPEND, key.getBytes(),value.getBytes());
+    public void append(String key, String value) {
+        connection.sendCommand(Protocol.Command.APPEND, key.getBytes(), value.getBytes());
     }
 
-    public void close(){
+    public void close() {
         connection.close();
     }
 }

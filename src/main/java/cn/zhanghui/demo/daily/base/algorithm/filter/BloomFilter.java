@@ -43,7 +43,7 @@ public class BloomFilter<T> {
 
     public boolean contain(T value) {
         for (SimpleHash simpleHash : hashes) {
-            if(!bitSet.get(simpleHash.hash(value))){
+            if (!bitSet.get(simpleHash.hash(value))) {
                 return false;
             }
         }

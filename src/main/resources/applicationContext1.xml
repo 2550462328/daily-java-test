@@ -3,14 +3,14 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 						http://www.springframework.org/schema/beans/spring-beans.xsd">
-		
-	<bean id = "personService" class="cn.zhanghui.demo.daily.my_spring.beanfactory_construt.test.service.PersonService">
-		<constructor-arg index="1" name="eatDao" ref="eatDao" />
-		<constructor-arg index="2" ref="drinkDao" />
-		<constructor-arg index="3" type="java.lang.String" value="zhanghui" />
-		<constructor-arg index="4" type="java.lang.Integer" value="18" />
-	</bean>
-	
-	<bean id="drinkDao" class="cn.zhanghui.demo.daily.my_spring.beanfactory_construt.test.dao.DrinkDao"/>
-	<bean id="eatDao" class="cn.zhanghui.demo.daily.my_spring.beanfactory_construt.test.dao.EatDao" />
+
+    <bean id="personService" class="cn.zhanghui.demo.daily.my_spring.beanfactory_construt.test.service.PersonService">
+        <constructor-arg index="1" name="eatDao" ref="eatDao"/>
+        <constructor-arg index="2" ref="drinkDao"/>
+        <constructor-arg index="3" type="java.lang.String" value="zhanghui"/>
+        <constructor-arg index="4" type="java.lang.Integer" value="18"/>
+    </bean>
+
+    <bean id="drinkDao" class="cn.zhanghui.demo.daily.my_spring.beanfactory_construt.test.dao.DrinkDao"/>
+    <bean id="eatDao" class="cn.zhanghui.demo.daily.my_spring.beanfactory_construt.test.dao.EatDao"/>
 </beans>

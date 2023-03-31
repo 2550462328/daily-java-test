@@ -11,11 +11,11 @@ public class OrderSystem {
 
     private MealBuilder builder;
 
-    public OrderSystem(MealBuilder builder){
+    public OrderSystem(MealBuilder builder) {
         this.builder = builder;
     }
 
-    public Meal build(){
+    public Meal build() {
         this.builder.buildFood();
         this.builder.buildMeal();
         return this.builder.getResult();

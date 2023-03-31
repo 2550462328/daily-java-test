@@ -5,7 +5,7 @@ package cn.zhanghui.demo.daily.design_model.construct.flyweight;
  * @version 1.0
  * @className Infantry
  * @description 享元模式的具体享元类
- *              这是一个弓箭手，这是可重复建造的单位
+ * 这是一个弓箭手，这是可重复建造的单位
  * @date 2020/6/23
  */
 public class Archer implements Soldier {
@@ -17,7 +17,7 @@ public class Archer implements Soldier {
 
     private String flight;
 
-    public Archer(String name){
+    public Archer(String name) {
         this.name = name;
     }
 

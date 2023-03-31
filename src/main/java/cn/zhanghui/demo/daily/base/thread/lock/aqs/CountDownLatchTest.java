@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class CountDownLatchTest {
     private ThreadPoolExecutor threadPool =
-        new ThreadPoolExecutor(100, 1000, 0, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(100));
+            new ThreadPoolExecutor(100, 1000, 0, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(100));
 
     private CountDownLatch downLatch = new CountDownLatch(100);
 
@@ -38,8 +38,8 @@ public class CountDownLatchTest {
         System.out.println("我是导游，我来分发旅游说明书...");
         System.out.println("所有人已到达，我们出发吧！");
         threadPool.shutdown();
-        while(true){
-            if(threadPool.isTerminated()){
+        while (true) {
+            if (threadPool.isTerminated()) {
                 System.out.println("线程池已关闭");
                 break;
             }

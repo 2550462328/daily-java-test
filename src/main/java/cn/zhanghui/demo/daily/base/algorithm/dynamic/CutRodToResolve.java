@@ -5,11 +5,10 @@ package cn.zhanghui.demo.daily.base.algorithm.dynamic;
  * @version 1.0
  * @className CutRodToResolve
  * @description 这是一个经典的切割绳子的问题，已知绳子长度n,和对应每块绳子长度(1~n)的价格，问怎么切割可以让这块绳子卖出的价格最高？
- *
+ * <p>
  * 比如绳子的长度是5，我可以切成1块 + 4块，或者2块 + 3块，价格是不一样的
- *
+ * <p>
  * 解决方案：以下分别使用递归和动态规划进行求解
- *
  * @date 2020/8/4
  */
 public class CutRodToResolve {
@@ -42,12 +41,11 @@ public class CutRodToResolve {
     }
 
     /**
-     *
      * 这里使用动态规划的思想实现
      * 记录在不同切割长度下的最优解，这里注意i从1开始的，因为0的话也就是n =1的时候没有切割意义，所以要注意动态规划的边界问题
-     *
+     * <p>
      * 这里为什么bestResolve的长度是length + 1？
-     *
+     * <p>
      * 我理解的就是8块砖头，从0~8对应着9个最优解，分别是bestResolve[0]~bestResolve[8]
      *
      * @param values
@@ -82,7 +80,7 @@ public class CutRodToResolve {
         int length = values.length;
 
         System.out.println(cutByRecur(values, length));
-        System.out.println(cutByDynamic(values,length));
+        System.out.println(cutByDynamic(values, length));
 
     }
 }

@@ -9,27 +9,29 @@ public class MyStack<T> {
     private Object[] content;
     private int size = 0;
     private final int DEFAULT_CONTENT_SIZE = 16;
-    public MyStack(){
+
+    public MyStack() {
         content = new Object[DEFAULT_CONTENT_SIZE];
     }
 
-    public void push(T t){
+    public void push(T t) {
         ensureCapablity();
         content[size++] = t;
     }
 
-    public T poll(){
-        if(size == 0){
+    public T poll() {
+        if (size == 0) {
             return null;
         }
-        return (T)content[--size];
+        return (T) content[--size];
     }
 
-    public int size(){
+    public int size() {
         return size;
     }
-    public void ensureCapablity(){
-        if(size >= content.length - 1){
+
+    public void ensureCapablity() {
+        if (size >= content.length - 1) {
             content = new Object[2 * content.length - 1];
         }
     }

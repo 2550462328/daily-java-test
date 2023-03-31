@@ -25,7 +25,7 @@ public class CalculateTreeHeight {
 
     private static TreeNode root = new TreeNode(0);
 
-    static{
+    static {
         TreeNode left1 = new TreeNode(1);
         TreeNode right1 = new TreeNode(2);
 
@@ -56,12 +56,12 @@ public class CalculateTreeHeight {
      * 求基于root的最大深度就是求 Math.max(roor.left.maxDepth, root.right.maxDepth) + 1，所以依次递归下去
      */
     public int maxDepthWithRecursive(TreeNode root) {
-        if(root == null) {
+        if (root == null) {
             return 0;
-        }else{
+        } else {
             int leftHeight = maxDepthWithRecursive(root.left);
             int rightgHeight = maxDepthWithRecursive(root.right);
-            return Math.max(leftHeight,rightgHeight) + 1;
+            return Math.max(leftHeight, rightgHeight) + 1;
         }
     }
 
@@ -71,16 +71,16 @@ public class CalculateTreeHeight {
      */
     public int maxDepthWithBFS(TreeNode root) {
 
-        if(root == null) return 0;
+        if (root == null) return 0;
         Queue<TreeNode> nodeQueue = new LinkedList<>();
         Queue<TreeNode> tempQueue = new LinkedList<>();
 
         nodeQueue.add(root);
         int depth = 0;
 
-        while(!nodeQueue.isEmpty()){
+        while (!nodeQueue.isEmpty()) {
 
-            while (nodeQueue.size() != 1){
+            while (nodeQueue.size() != 1) {
                 tempQueue.add(nodeQueue.poll());
             }
 
@@ -88,13 +88,13 @@ public class CalculateTreeHeight {
 
             depth++;
 
-            while(!tempQueue.isEmpty()){
+            while (!tempQueue.isEmpty()) {
                 TreeNode curr = tempQueue.poll();
 
-                if(curr.left != null){
+                if (curr.left != null) {
                     nodeQueue.add(curr.left);
                 }
-                if(curr.right != null){
+                if (curr.right != null) {
                     nodeQueue.add(curr.right);
                 }
             }
@@ -110,24 +110,24 @@ public class CalculateTreeHeight {
      */
     public int maxDepthWithBFSInAdvanced(TreeNode root) {
 
-        if(root == null) return 0;
+        if (root == null) return 0;
         Queue<TreeNode> nodeQueue = new LinkedList<>();
 
         nodeQueue.offer(root);
 
         int depth = 0;
 
-        while(!nodeQueue.isEmpty()){
+        while (!nodeQueue.isEmpty()) {
 
             int size = nodeQueue.size();
 
-            while(size > 0){
+            while (size > 0) {
                 TreeNode curr = nodeQueue.poll();
 
-                if(curr.left != null){
+                if (curr.left != null) {
                     nodeQueue.offer(curr.left);
                 }
-                if(curr.right != null){
+                if (curr.right != null) {
                     nodeQueue.offer(curr.right);
                 }
                 size--;

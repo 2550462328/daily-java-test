@@ -25,14 +25,14 @@ public class WeChatPlat implements Platform {
 
     @Override
     public void notifyUsers(String message) {
-        userSet.stream().forEach(user -> notifyUser(message,user));
+        userSet.stream().forEach(user -> notifyUser(message, user));
     }
 
-    private void notifyUser(String message, IUser user){
+    private void notifyUser(String message, IUser user) {
         user.update(message);
     }
 
-    public void sendMessage(String message){
+    public void sendMessage(String message) {
         notifyUsers(message);
     }
 }

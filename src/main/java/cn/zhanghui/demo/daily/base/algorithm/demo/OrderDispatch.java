@@ -10,9 +10,9 @@ import java.util.Scanner;
  * @className OrderDispatch
  * @description 打车派单场景, 假定有N个订单， 待分配给N个司机。每个订单在匹配司机前，会对候选司机进行打分，打分的结果保存在N*N的矩阵A， 其中Aij 代表订单i司机j匹配的分值。
  * 假定每个订单只能派给一位司机，司机只能分配到一个订单。求最终的派单结果，使得匹配的订单和司机的分值累加起来最大，并且所有订单得到分配。
- *
+ * <p>
  * 解决思路：采用回溯的思想（循环 + 递归），对于n * n 的情况， 记录每一次遍历的顺序，计算每一次遍历顺序下的总和，返回最大值
- *
+ * <p>
  * 核心思想还是这个在循环里递归的情况，遍历到第n层后往回调，调到n-1层，把n-1层所有情况尝试后再回调了n-2层，直到第一层
  * @date 2020/7/23
  */
@@ -23,8 +23,9 @@ public class OrderDispatch {
 
     /**
      * 功能描述
-     * @param sum 当前遍历的n * n矩阵
-     * @param n 矩阵的宽度
+     *
+     * @param sum      当前遍历的n * n矩阵
+     * @param n        矩阵的宽度
      * @param curOrder 当前的序列号
      * @return void
      */
@@ -78,9 +79,9 @@ public class OrderDispatch {
 
         backTrack(num, n, curOrder);
 
-        System.out.printf("%.2f\n",lastSum);
-        for(int i = 0; i < n; i++){
-            System.out.println(i+1 + " " + (lastOrder.get(i) + 1));
+        System.out.printf("%.2f\n", lastSum);
+        for (int i = 0; i < n; i++) {
+            System.out.println(i + 1 + " " + (lastOrder.get(i) + 1));
         }
     }
 

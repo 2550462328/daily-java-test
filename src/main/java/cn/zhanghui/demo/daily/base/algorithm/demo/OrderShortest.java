@@ -20,7 +20,7 @@ public class OrderShortest {
      * @param target
      */
     public static void getShortesOrder_recursive(String target) {
-        if(target == null || target.isEmpty()){
+        if (target == null || target.isEmpty()) {
             return;
         }
 
@@ -29,7 +29,7 @@ public class OrderShortest {
         int end, temp = 1;
 
         if ((end = target.lastIndexOf(first)) != 0 && end != len - 1) {
-            while(temp < end){
+            while (temp < end) {
                 char inner = target.charAt(temp);
                 end = Math.max(end, target.lastIndexOf(inner));
                 temp++;

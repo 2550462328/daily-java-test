@@ -16,14 +16,14 @@ public class ChatRoom implements IRoom {
 
     @Override
     public void operate(String name, String message) {
-        if(userMap.containsKey(name)){
-            ((User)(userMap.get(name))).receiveMessage(message);
+        if (userMap.containsKey(name)) {
+            ((User) (userMap.get(name))).receiveMessage(message);
         }
     }
 
     @Override
     public void register(User user) {
-        userMap.put(user.getName(),user);
+        userMap.put(user.getName(), user);
         user.setiRoom(this);
     }
 }

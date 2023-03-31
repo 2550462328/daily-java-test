@@ -7,21 +7,20 @@ import java.util.Queue;
 /**
  * @ClassName LevelTraverseTree
  * @Description: 给你一个二叉树，请你返回其按 层序遍历 得到的节点值。 （即逐层地，从左到右访问所有节点）。
- *
- *     3
- *    / \
- *   9  20
- *     /  \
- *    15   7
- *
+ * <p>
+ * 3
+ * / \
+ * 9  20
+ * /  \
+ * 15   7
+ * <p>
  * 返回其层次遍历结果：
- *
+ * <p>
  * [
- *   [3],
- *   [9,20],
- *   [15,7]
+ * [3],
+ * [9,20],
+ * [15,7]
  * ]
- *
  * @Author: ZhangHui
  * @Date: 2020/9/29
  * @Version：1.0
@@ -67,27 +66,27 @@ public class LevelTraverseTree {
 
         List<List<Integer>> resultList = new LinkedList<>();
 
-        if(root == null) return resultList;
+        if (root == null) return resultList;
 
         Queue<TreeNode> nodeQueue = new LinkedList<>();
 
         nodeQueue.offer(root);
 
-        while(!nodeQueue.isEmpty()){
+        while (!nodeQueue.isEmpty()) {
 
             List<Integer> levelList = new LinkedList<>();
 
             int size = nodeQueue.size();
 
-            while(size > 0){
+            while (size > 0) {
 
                 TreeNode curr = nodeQueue.poll();
 
                 levelList.add(curr.val);
 
-                if(curr.left != null) nodeQueue.add(curr.left);
+                if (curr.left != null) nodeQueue.add(curr.left);
 
-                if(curr.right != null) nodeQueue.add(curr.right);
+                if (curr.right != null) nodeQueue.add(curr.right);
 
                 size--;
             }

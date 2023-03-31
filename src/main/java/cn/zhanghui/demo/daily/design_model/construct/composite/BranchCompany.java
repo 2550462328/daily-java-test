@@ -12,7 +12,7 @@ import java.util.Set;
  */
 public class BranchCompany implements Orginization {
 
-    private Set<Orginization> orginizationSet  = new HashSet<>();
+    private Set<Orginization> orginizationSet = new HashSet<>();
 
     @Override
     public void add(Orginization orginization) {

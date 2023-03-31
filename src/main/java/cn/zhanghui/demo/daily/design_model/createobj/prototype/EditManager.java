@@ -12,11 +12,11 @@ import java.util.HashMap;
 public class EditManager {
     private HashMap<String, Tool> toolMap = new HashMap<>();
 
-    public void registerTool(String name, Tool tool){
-        this.toolMap.put(name,tool);
+    public void registerTool(String name, Tool tool) {
+        this.toolMap.put(name, tool);
     }
 
-    public Tool getTool(String name){
+    public Tool getTool(String name) {
         return this.toolMap.get(name);
     }
 }

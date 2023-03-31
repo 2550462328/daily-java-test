@@ -12,11 +12,11 @@ import java.util.concurrent.*;
 public class CyclicBarrierExceptionTest {
     private static final int CPU_NUM = Runtime.getRuntime().availableProcessors();
 
-    private ThreadPoolExecutor threadPool = new ThreadPoolExecutor(100,1000,0, TimeUnit.SECONDS,new LinkedBlockingQueue<Runnable>(100));
+    private ThreadPoolExecutor threadPool = new ThreadPoolExecutor(100, 1000, 0, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(100));
 
-    private CyclicBarrier barrier = new CyclicBarrier(100,new LastTask());
+    private CyclicBarrier barrier = new CyclicBarrier(100, new LastTask());
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         new CyclicBarrierExceptionTest().doBarrier();
     }
 
@@ -28,27 +28,28 @@ public class CyclicBarrierExceptionTest {
      * 4. barrier被broken了,比如上面的reset就会breakBarrier
      * 上述情况所有线程都抛出BrokenBarrierException
      * 在finalTask中如果抛出异常所有await的线程也会抛出BrokenBarrierException，程序继续进行
-     * @author ZhangHui
-     * @date 2020/3/12
+     *
      * @param
      * @return void
+     * @author ZhangHui
+     * @date 2020/3/12
      */
-    private void doBarrier(){
-            for(int i = 0 ; i < 100; i++){
-                Thread thread = new Thread(()->{
-                    try {
-                        //返回下标，范围0~99
-                        int index = barrier.await();
-                        System.out.println(Thread.currentThread().getName()+"：我已到达...我是倒数第"+(index + 1)+"个");
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } catch (BrokenBarrierException e) {
-                        e.printStackTrace();
-                    }
-                    System.out.println(Thread.currentThread().getName()+"：去出发旅游咯...");
-                },"thread"+i);
-                threadPool.execute(thread);
-            }
+    private void doBarrier() {
+        for (int i = 0; i < 100; i++) {
+            Thread thread = new Thread(() -> {
+                try {
+                    //返回下标，范围0~99
+                    int index = barrier.await();
+                    System.out.println(Thread.currentThread().getName() + "：我已到达...我是倒数第" + (index + 1) + "个");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (BrokenBarrierException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(Thread.currentThread().getName() + "：去出发旅游咯...");
+            }, "thread" + i);
+            threadPool.execute(thread);
+        }
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -77,8 +78,8 @@ public class CyclicBarrierExceptionTest {
 //            threadInterrupted.interrupt();
 //        });
         threadPool.shutdown();
-        while(true){
-            if(threadPool.isTerminated()){
+        while (true) {
+            if (threadPool.isTerminated()) {
                 System.out.println("线程池已关闭");
                 break;
             }
@@ -89,7 +90,7 @@ public class CyclicBarrierExceptionTest {
 
 /**
  * 执行解除屏障前的操作，当前线程由最后一个进入屏障的线程执行！
- * 
+ *
  * @author ZhangHui
  * @date 2020/3/11
  * @returns

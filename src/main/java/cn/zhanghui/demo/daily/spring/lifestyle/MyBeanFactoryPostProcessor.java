@@ -13,7 +13,7 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
  */
 public class MyBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
 
-    public MyBeanFactoryPostProcessor(){
+    public MyBeanFactoryPostProcessor() {
         super();
         System.out.println("装配Bean之前BeanFactory处理器BeanFactoryPostProcessor的构造器方法");
     }

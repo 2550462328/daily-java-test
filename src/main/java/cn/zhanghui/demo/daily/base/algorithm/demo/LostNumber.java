@@ -59,9 +59,9 @@ public class LostNumber {
             missSum += i;
         }
 
-        if(missSum == sum){
-            return  0;
-        }else{
+        if (missSum == sum) {
+            return 0;
+        } else {
             return sum - missSum;
         }
     }

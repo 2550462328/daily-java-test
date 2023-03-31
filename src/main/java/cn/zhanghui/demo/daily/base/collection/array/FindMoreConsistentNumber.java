@@ -21,7 +21,7 @@ package cn.zhanghui.demo.daily.base.collection.array;
 public class FindMoreConsistentNumber {
 
     public static void main(String[] args) {
-        int[] prices = {7,6,4,3,1};
+        int[] prices = {7, 6, 4, 3, 1};
 
         System.out.println(maxProfit(prices));
     }
@@ -59,13 +59,13 @@ public class FindMoreConsistentNumber {
 
         for (int i = 1; i < plen; i++) {
             if (prices[i] > prices[i - 1]) {
-                if(i == plen -1){
+                if (i == plen - 1) {
                     sumProfit += (prices[i] - prices[n]);
                 }
                 clen++;
-            }else if(clen == 0){
+            } else if (clen == 0) {
                 n = i;
-            }else{
+            } else {
                 sumProfit += (prices[m] - prices[n]);
                 n = i;
                 clen = 0;

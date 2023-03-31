@@ -8,9 +8,9 @@ package cn.zhanghui.demo.daily.design_model.createobj.factory.simple_factory;
  */
 public class Car implements Moveable {
 
-	@Override
-	public void run() {
-		System.out.println("i have a car");
-	}
+    @Override
+    public void run() {
+        System.out.println("i have a car");
+    }
 
 }

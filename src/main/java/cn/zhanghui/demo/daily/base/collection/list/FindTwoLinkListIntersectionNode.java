@@ -3,12 +3,12 @@ package cn.zhanghui.demo.daily.base.collection.list;
 /**
  * 编写一个程序，找到两个单链表相交的起始节点。
  * 如下面的两个链表：
- *
+ * <p>
  * 4 -> 1 -> 8 -> 2 -> 1 -> NULL
  * 1 -> 1 -> 8 -> 2 -> 1 -> NULL
- *
+ * <p>
  * 输出节点 1
- *
+ * <p>
  * 在第2个节点开始相交。
  *
  * @author: ZhangHui
@@ -58,9 +58,9 @@ public class FindTwoLinkListIntersectionNode {
         headB.next.next.next.next = node2;
         headB.next.next.next.next.next = node3;
     }
-    
+
     public static void main(String[] args) {
-        ListNode resultNode = new FindTwoLinkListIntersectionNode().getIntersectionNode_advanced(headA,headB);
+        ListNode resultNode = new FindTwoLinkListIntersectionNode().getIntersectionNode_advanced(headA, headB);
         System.out.println(resultNode.val);
         pringLinkList(headA);
         System.out.println();
@@ -72,15 +72,15 @@ public class FindTwoLinkListIntersectionNode {
      */
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 
-        if(headA == null || headB == null){
+        if (headA == null || headB == null) {
             return null;
         }
 
         ListNode headB_copy = new ListNode(headB.val);
-        ListNode listNodeB_copy = headB_copy,listNodeB = headB;
+        ListNode listNodeB_copy = headB_copy, listNodeB = headB;
 
         // 记录原链表B的值
-        while(listNodeB != null && listNodeB.next != null){
+        while (listNodeB != null && listNodeB.next != null) {
             listNodeB_copy.next = new ListNode(listNodeB.next.val);
             listNodeB = listNodeB.next;
             listNodeB_copy = listNodeB_copy.next;
@@ -94,13 +94,13 @@ public class FindTwoLinkListIntersectionNode {
         ListNode listNodeB2 = headB;
         ListNode listNodeA = headA;
         ListNode prev = null;
-        while(listNodeB2 != null){
+        while (listNodeB2 != null) {
 
             //这里考虑到链表B是链表A的子串
-            if(headB_copy == null || headB_copy.val != listNodeB2.val){
+            if (headB_copy == null || headB_copy.val != listNodeB2.val) {
                 intersectionNode = prev;
                 break;
-            }else if(listNodeA == listNodeB2){ // 这里考虑到链表A是链表B的子串
+            } else if (listNodeA == listNodeB2) { // 这里考虑到链表A是链表B的子串
                 intersectionNode = listNodeA;
                 break;
             }
@@ -116,13 +116,13 @@ public class FindTwoLinkListIntersectionNode {
         return intersectionNode;
     }
 
-    private ListNode reverseLinkList(ListNode head){
+    private ListNode reverseLinkList(ListNode head) {
 
         ListNode prev = null;
 
         ListNode curr = head;
 
-        while(curr != null){
+        while (curr != null) {
             ListNode tempNode = curr.next;
             curr.next = prev;
             prev = curr;
@@ -147,18 +147,18 @@ public class FindTwoLinkListIntersectionNode {
         ListNode nodeA = headA;
         ListNode nodeB = headB;
 
-        while(nodeA != nodeB){
+        while (nodeA != nodeB) {
 
             nodeA = nodeA.next;
             nodeB = nodeB.next;
 
-            if(nodeA == null && nodeB == null){
+            if (nodeA == null && nodeB == null) {
                 return null;
             }
-            if(nodeA == null){
+            if (nodeA == null) {
                 nodeA = headB;
             }
-            if(nodeB == null){
+            if (nodeB == null) {
                 nodeB = headA;
             }
         }
@@ -166,9 +166,9 @@ public class FindTwoLinkListIntersectionNode {
         return nodeA;
     }
 
-    private static void pringLinkList(ListNode head){
-        while(head != null){
-            System.out.print(head.val + " -> " );
+    private static void pringLinkList(ListNode head) {
+        while (head != null) {
+            System.out.print(head.val + " -> ");
             head = head.next;
         }
     }

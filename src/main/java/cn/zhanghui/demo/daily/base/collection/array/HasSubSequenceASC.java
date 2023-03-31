@@ -22,7 +22,7 @@ package cn.zhanghui.demo.daily.base.collection.array;
 public class HasSubSequenceASC {
 
     public static void main(String[] args) {
-        int[] nums = {1,2,-10,-8,-7};
+        int[] nums = {1, 2, -10, -8, -7};
         System.out.println(new HasSubSequenceASC().increasingTriplet(nums));
     }
 
@@ -33,7 +33,7 @@ public class HasSubSequenceASC {
      */
     public boolean increasingTriplet(int[] nums) {
 
-        if(nums.length < 3){
+        if (nums.length < 3) {
             return false;
         }
         // 遍历的指针
@@ -84,20 +84,20 @@ public class HasSubSequenceASC {
     }
 
     public boolean increasingTriplet_easy(int[] nums) {
-        if(nums.length < 3){
+        if (nums.length < 3) {
             return false;
         }
         // 保证second无论如何都可以赋一个比first大的值
         int first = nums[0], second = Integer.MAX_VALUE;
 
-        for(int i = 0; i < nums.length; i++){
-            if(nums[i] <= first){
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] <= first) {
                 first = nums[i];
-            }else if(nums[i] <= second){
+            } else if (nums[i] <= second) {
                 // 虽然second的有效值可能在first的前面 但是要知道如果second成功赋值了，说明前面必有一节是second > first的
                 // 所以重点在下面的判断 nums[i] > second 因为second肯定 大于 first ，所以只要有值是大于second的就可以了
                 second = nums[i];
-            }else{ // 出现值大于first和second 说明是有递增子序列的
+            } else { // 出现值大于first和second 说明是有递增子序列的
                 return true;
             }
         }

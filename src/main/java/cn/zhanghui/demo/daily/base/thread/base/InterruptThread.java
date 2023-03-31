@@ -9,24 +9,24 @@ package cn.zhanghui.demo.daily.base.thread.base;
  * @date: 2019年10月28日 下午12:36:39
  */
 public class InterruptThread {
-	public static void main(String[] args) {
-		Thread thread = new Thread(new Mythread());
-		thread.start();
-		try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		Thread.yield();
-		thread.interrupt();
-		System.out.println(Thread.currentThread().getName() + ":" + thread.isInterrupted());
-	}
+    public static void main(String[] args) {
+        Thread thread = new Thread(new Mythread());
+        thread.start();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Thread.yield();
+        thread.interrupt();
+        System.out.println(Thread.currentThread().getName() + ":" + thread.isInterrupted());
+    }
 }
 
- class Mythread implements Runnable  {
-	@Override
-	public void run() {
-		while(!Thread.currentThread().isInterrupted()) {
+class Mythread implements Runnable {
+    @Override
+    public void run() {
+        while (!Thread.currentThread().isInterrupted()) {
 //			try {
 //				Thread.sleep(1000);
 //			    //当线程在sleep、wait、join的时候被中断，会抛出InterruptedExceptionn，同时将thread.isInterrupted置为false，需要在catch再次执行interrupt()
@@ -34,8 +34,8 @@ public class InterruptThread {
 //			} catch (InterruptedException e) {
 //				e.printStackTrace();
 //			}
-			System.out.println(Thread.currentThread().getName() + ":" + Thread.currentThread().isInterrupted());
-			System.out.println("i am a thread, i am running so happy!");
-		}
-	}
+            System.out.println(Thread.currentThread().getName() + ":" + Thread.currentThread().isInterrupted());
+            System.out.println("i am a thread, i am running so happy!");
+        }
+    }
 }

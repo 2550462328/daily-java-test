@@ -64,27 +64,27 @@ public class GuessOrder {
 
         while (!queue.isEmpty()) {
             TreeNode curNode = queue.poll();
-            queueSize ++;
+            queueSize++;
             if (!curNode.childrenNode.isEmpty()) {
                 for (Map.Entry<Character, TreeNode> entry : curNode.childrenNode.entrySet()) {
                     boolean parentVisited = false;
                     TreeNode tempNode = entry.getValue();
 
-                    for(TreeNode treeNode : tempNode.parentsNode){
-                        if(!treeNode.isVisited){
+                    for (TreeNode treeNode : tempNode.parentsNode) {
+                        if (!treeNode.isVisited) {
                             parentVisited = true;
                         }
                     }
 
-                    if(!parentVisited && !tempNode.isVisited){
-                    queue.add(tempNode);
-                    resultList.add(entry.getKey());
+                    if (!parentVisited && !tempNode.isVisited) {
+                        queue.add(tempNode);
+                        resultList.add(entry.getKey());
                         entry.getValue().isVisited = true;
                     }
                 }
             }
         }
-        if(queueSize == head.childrenNode.size() + 1){
+        if (queueSize == head.childrenNode.size() + 1) {
             return null;
         }
         return resultList;
@@ -125,9 +125,9 @@ public class GuessOrder {
 
         List<Character> list = guessOrder.bfs_tree();
 
-        if(list == null){
+        if (list == null) {
             System.out.println("invalid");
-        }else {
+        } else {
             System.out.println(list.toString());
         }
     }

@@ -10,7 +10,9 @@ package cn.zhanghui.demo.daily.design_model.construct.composite;
 public interface Orginization {
 
     void add(Orginization orginization);
+
     void remove(Orginization orginization);
+
     void display();
 
     // 每个组件自己的任务

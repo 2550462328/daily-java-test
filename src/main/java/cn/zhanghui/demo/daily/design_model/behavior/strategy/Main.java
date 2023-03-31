@@ -13,10 +13,10 @@ public class Main {
 
         calculator.setComputeMethod(new AddMethod());
 
-        System.out.println(calculator.compute(1,2));
+        System.out.println(calculator.compute(1, 2));
 
         calculator.setComputeMethod(new MinusMethod());
 
-        System.out.println(calculator.compute(2,1));
+        System.out.println(calculator.compute(2, 1));
     }
 }

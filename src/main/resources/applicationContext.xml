@@ -3,18 +3,18 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 						http://www.springframework.org/schema/beans/spring-beans.xsd">
-		
-	<bean id="car" class="cn.zhanghui.demo.daily.my_spring.beanfactory.bean.Car"/>
-	<bean id="student" class="cn.zhanghui.demo.daily.my_spring.beanfactory_up.bean.Student" />
-	<bean id="invalidBean" class="xx.xx.xx"/>
-	
-	<bean id = "personService" class="cn.zhanghui.demo.daily.my_spring.beanfactory_set.test.service.PersonService">
-		<property name="eatDao" ref="eatDao" />
-		<property name="drinkDao" ref="drinkDao" />
-		<property name="name" value="zhanghui" />
-		<property name="age" value="18" />
-	</bean>
-	
-	<bean id="drinkDao" class="cn.zhanghui.demo.daily.my_spring.beanfactory_set.test.dao.DrinkDao"/>
-	<bean id="eatDao" class="cn.zhanghui.demo.daily.my_spring.beanfactory_set.test.dao.EatDao" />
+
+    <bean id="car" class="cn.zhanghui.demo.daily.my_spring.beanfactory.bean.Car"/>
+    <bean id="student" class="cn.zhanghui.demo.daily.my_spring.beanfactory_up.bean.Student"/>
+    <bean id="invalidBean" class="xx.xx.xx"/>
+
+    <bean id="personService" class="cn.zhanghui.demo.daily.my_spring.beanfactory_set.test.service.PersonService">
+        <property name="eatDao" ref="eatDao"/>
+        <property name="drinkDao" ref="drinkDao"/>
+        <property name="name" value="zhanghui"/>
+        <property name="age" value="18"/>
+    </bean>
+
+    <bean id="drinkDao" class="cn.zhanghui.demo.daily.my_spring.beanfactory_set.test.dao.DrinkDao"/>
+    <bean id="eatDao" class="cn.zhanghui.demo.daily.my_spring.beanfactory_set.test.dao.EatDao"/>
 </beans>

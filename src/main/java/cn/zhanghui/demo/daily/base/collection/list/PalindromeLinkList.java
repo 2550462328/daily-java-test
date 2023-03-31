@@ -74,7 +74,7 @@ public class PalindromeLinkList {
      */
     public boolean isPalindromeWithReverseLinkList(ListNode head) {
 
-        if(head == null){
+        if (head == null) {
             return true;
         }
 

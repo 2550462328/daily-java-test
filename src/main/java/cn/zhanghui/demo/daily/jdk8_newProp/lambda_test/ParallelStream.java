@@ -10,11 +10,11 @@ import java.util.List;
  */
 public class ParallelStream {
     public static void main(String[] args) {
-        int[] numArr = {13,23,11,2,343,32};
+        int[] numArr = {13, 23, 11, 2, 343, 32};
         Arrays.parallelSort(numArr);
         System.out.println(numArr[0]);
 
-        List<String> numList = Arrays.asList("22","32","13","43","13");
+        List<String> numList = Arrays.asList("22", "32", "13", "43", "13");
         int sum = numList.parallelStream()
                 .mapToInt(i -> Integer.parseInt(i))
                 .sum();

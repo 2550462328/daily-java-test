@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 public interface ConsumerCheck<T, E extends Throwable> {
     void accept(T t) throws E;
 
-    static <T, E extends Throwable> Consumer<T> uncheck(ConsumerCheck<T, E> c){
+    static <T, E extends Throwable> Consumer<T> uncheck(ConsumerCheck<T, E> c) {
         return t -> {
             try {
                 c.accept(t);

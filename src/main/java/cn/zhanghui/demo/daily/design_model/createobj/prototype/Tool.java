@@ -7,7 +7,7 @@ package cn.zhanghui.demo.daily.design_model.createobj.prototype;
  * @description 原型模式的Product
  * @date 2020/6/22
  */
-public  interface Tool extends Cloneable {
+public interface Tool extends Cloneable {
 
     void use();
 

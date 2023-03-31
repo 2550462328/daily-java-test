@@ -13,10 +13,9 @@ import java.util.stream.Collectors;
  * @version 1.0
  * @className Student
  * @description StringJoiner和fastjson中出现stackoverflow的联合测试
- * 				字符串少的情况用 + 连接
- *              for循环中用stringBuilder连接
- *              通过list则考虑使用stringJoiner同时配合stream
- *              
+ * 字符串少的情况用 + 连接
+ * for循环中用stringBuilder连接
+ * 通过list则考虑使用stringJoiner同时配合stream
  * @date 2019/11/15
  */
 @JSONType(ignores = "jsonString")
@@ -46,7 +45,7 @@ public class Student {
 
     // 序列化的时候不能序列化jsonString，会报StackOverflow
 //    @JSONField(serialize = false)
-    public String getJsonString(){
+    public String getJsonString() {
         return JSONObject.toJSONString(this);
     }
 
@@ -70,7 +69,7 @@ public class Student {
     @Override
     public String toString() {
         // 使用StringJoiner拼接toString
-        StringJoiner joiner = new StringJoiner(",","[","]");
+        StringJoiner joiner = new StringJoiner(",", "[", "]");
         joiner.add(this.name).add(this.age);
         return joiner.toString();
     }

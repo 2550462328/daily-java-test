@@ -31,7 +31,7 @@ public class FindFirstNoRepeatElement {
 
         char[] chars = s.toCharArray();
 
-        if(chars.length == 1){
+        if (chars.length == 1) {
             return 0;
         }
 

@@ -101,20 +101,20 @@ public class FindArrayThreeElementsEqualsZero {
             int target = -nums[first];
 
 
-            for(int second = first + 1; second < n ;second++){
+            for (int second = first + 1; second < n; second++) {
 
-                if(second > first + 1 && nums[second] == nums[second-1]){
+                if (second > first + 1 && nums[second] == nums[second - 1]) {
                     continue;
                 }
 
-                while(second < third && nums[second] + nums[third] > target){
+                while (second < third && nums[second] + nums[third] > target) {
                     third--;
                 }
 
-                if(second == third){
+                if (second == third) {
                     break;
                 }
-                if(nums[second] + nums[third] == target){
+                if (nums[second] + nums[third] == target) {
 
                     List<Integer> findList = new ArrayList<>();
                     findList.add(nums[first]);

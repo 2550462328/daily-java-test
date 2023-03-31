@@ -6,22 +6,22 @@ import java.util.Map;
 /**
  * Description:
  * 根据一棵树的前序遍历与中序遍历构造二叉树。
- *
+ * <p>
  * 注意:
  * 你可以假设树中没有重复的元素。
- *
+ * <p>
  * 例如，给出
- *
+ * <p>
  * 前序遍历 preorder = [3,9,20,15,7]
  * 中序遍历 inorder = [9,3,15,20,7]
- *
+ * <p>
  * 返回如下的二叉树：
- *
- *     3
- *    / \
- *   9  20
- *     /  \
- *    15   7
+ * <p>
+ * 3
+ * / \
+ * 9  20
+ * /  \
+ * 15   7
  *
  * @author createdBy huizhang43.
  * @date createdAt 2020/12/23 9:20
@@ -45,6 +45,7 @@ public class GetTreeFromPreAndMiddleTraverse {
      * 以及确定左节点和右节点的位置，左节点在根节点 + 1 的位置，右节点在根节点 + 根节点左子树节点个数 + 1的位置
      * 再依次递归到左子树和右子树的建造
      * 递归的结束条件就是对于一个节点，它的左边界 大于 右边界了
+     *
      * @param preorder
      * @param preorder_left
      * @param preorder_right
@@ -84,10 +85,10 @@ public class GetTreeFromPreAndMiddleTraverse {
     }
 
     public static void main(String[] args) {
-        int[] preorder = {3,9,20,15,7};
-        int[] inorder = {9,3,15,20,7};
+        int[] preorder = {3, 9, 20, 15, 7};
+        int[] inorder = {9, 3, 15, 20, 7};
 
-        System.out.println(new GetTreeFromPreAndMiddleTraverse().buildTree(preorder,inorder));
+        System.out.println(new GetTreeFromPreAndMiddleTraverse().buildTree(preorder, inorder));
     }
 
 }

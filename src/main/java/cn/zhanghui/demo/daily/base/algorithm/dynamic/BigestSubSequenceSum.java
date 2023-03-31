@@ -16,7 +16,7 @@ package cn.zhanghui.demo.daily.base.algorithm.dynamic;
 public class BigestSubSequenceSum {
 
     public static void main(String[] args) {
-        int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
+        int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
         System.out.println(new BigestSubSequenceSum().maxSubArray(nums));
     }
 
@@ -38,10 +38,11 @@ public class BigestSubSequenceSum {
 
     /**
      * 从头部和尾部同时进行寻找最大值，最后的最大值要么在左边，要么在右边，要么在中间
-     * @author ZhangHui
-     * @date 2020/10/13
+     *
      * @param nums
      * @return int
+     * @author ZhangHui
+     * @date 2020/10/13
      */
     public int maxSubArray_violent(int[] nums) {
         if (nums.length == 0) return 0;

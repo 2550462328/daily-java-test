@@ -14,7 +14,7 @@ import org.apache.commons.lang.StringUtils;
 public class StringArrayReverse {
 
     public static void main(String[] args) {
-        char[] s = {'H','a','n','n','a','h'};
+        char[] s = {'H', 'a', 'n', 'n', 'a', 'h'};
 
         StringArrayReverse stringArrayReverse = new StringArrayReverse();
 
@@ -22,7 +22,7 @@ public class StringArrayReverse {
 
         System.out.println(StringUtils.reverse(new String(s)));
     }
-    
+
     public void reverseString(char[] s) {
         int i = 0, j = s.length - 1;
 

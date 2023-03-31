@@ -85,7 +85,7 @@ public class PrimeTest {
      */
     public int countPrimes_acvanced_memory1(int n) {
 
-        if(n < 2) return 0;
+        if (n < 2) return 0;
 
         BitSet bitSet = new BitSet(n);
 
@@ -96,7 +96,7 @@ public class PrimeTest {
                 }
             }
         }
-        return n-2-bitSet.cardinality();
+        return n - 2 - bitSet.cardinality();
     }
 
     /**

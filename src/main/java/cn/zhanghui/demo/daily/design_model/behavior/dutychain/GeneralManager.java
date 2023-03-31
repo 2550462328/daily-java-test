@@ -11,9 +11,9 @@ public class GeneralManager extends Handler {
 
     @Override
     protected void handleRequest(int price) {
-        if(Math.min(2000,price) == price){
+        if (Math.min(2000, price) == price) {
             System.out.println("总经理审批通过~");
-        }else{
+        } else {
             Handler handler = this.getSuccessor();
             handler.handleRequest(price);
         }
