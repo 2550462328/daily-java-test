@@ -44,6 +44,8 @@ package cn.zhanghui.demo.daily.leetcode.editor.cn;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 
+import cn.zhanghui.demo.daily.leetcode.editor.cn.component.ListNode;
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -54,9 +56,37 @@ package cn.zhanghui.demo.daily.leetcode.editor.cn;
  * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-class Solution {
-//    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-//
-//    }
+class Solution2 {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
+
+        ListNode headNode = null;
+        ListNode lastNode = null;
+        int prompt = 0;
+        while (l1 != null || l2 != null) {
+            int l1Val = l1 == null ? 0: l1.val;
+            int l2Val = l2 == null ? 0: l2.val;
+
+            int val = (l1Val + l2Val + prompt) % 10;
+            prompt = (l1Val + l2Val + prompt) / 10;
+
+            if (headNode == null) {
+                headNode = new ListNode(val);
+                lastNode = headNode;
+            } else {
+                lastNode.next = new ListNode(val);
+                lastNode = lastNode.next;
+
+            }
+            l1 = l1 == null ? null : l1.next;
+            l2 = l2 == null ? null : l2.next;
+        }
+
+        if (prompt != 0) {
+            lastNode.next = new ListNode(1);
+        }
+        return headNode;
+    }
 }
 //leetcode submit region end(Prohibit modification and deletion)

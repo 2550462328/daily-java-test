@@ -23,5 +23,5 @@ public abstract class AbstractBaseSort {
         System.out.println("排序后:" + Arrays.toString(source));
     }
 
-    abstract void sort(int[] source, boolean asc);
+    public abstract void sort(int[] source, boolean asc);
 }

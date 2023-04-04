@@ -50,21 +50,22 @@ public class BaseTest {
         //        }
 
         //         常量池测试
-        //        Integer i1 = 20;
-        //        Integer i2 = 20;
-        //		  Integer i1 = 128;
-        //		  Integer i2 = 128;
-        //		  System.out.println(i1 == i2); // false
-        //        Integer i3 = 0;
-        //        Integer i4 = new Integer(20);
-        //        Integer i5 = new Integer(20);
-        //        Integer i6 = new Integer(0);
-        //        System.out.println("i1 == i2：" + (i1 == i2)); // true
-        //        System.out.println("i1 == i2 + i3：" + (i1 == i2 + i3)); // true
-        //        System.out.println("i4 == i5：" + (i4 == i5));  // false
-        //        System.out.println("i4 == i5 + i6：" + (i4 == i5 + i6)); // false
 
+//        		  Integer i1 = 128;
+//        		  Integer i2 = 128;
+//        		  System.out.println(i1 == i2); // false
+        Integer i1 = 20;
+        Integer i2 = 20;
+        System.out.println(i1 == i2); // true
 
+        Integer i3 = 0;
+        Integer i4 = new Integer(20);
+        Integer i5 = new Integer(20);
+        Integer i6 = new Integer(0);
+        System.out.println("i1 == i2：" + (i1 == i2)); // true
+        System.out.println("i1 == i2 + i3：" + (i1 == i2 + i3)); // true
+        System.out.println("i4 == i5：" + (i4 == i5));  // false
+        System.out.println("i4 == i5 + i6：" + (i4 == i5 + i6)); // true 算术运算符 会拆箱进行运算 对于运算结果 在常量池里有的话 就直接返回
     }
 
 }

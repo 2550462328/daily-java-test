@@ -18,7 +18,7 @@ public class MergeSort extends AbstractBaseSort {
     }
 
     @Override
-    void sort(int[] source, boolean asc) {
+    public void sort(int[] source, boolean asc) {
         splitAndMerge(source, 0, source.length - 1);
     }
 

@@ -17,7 +17,7 @@ public class ShellSort extends AbstractBaseSort {
     }
 
     @Override
-    void sort(int[] source, boolean asc) {
+    public void sort(int[] source, boolean asc) {
 
         int length = source.length;
         //1. 确定步长 这里采用折叠的步长计算

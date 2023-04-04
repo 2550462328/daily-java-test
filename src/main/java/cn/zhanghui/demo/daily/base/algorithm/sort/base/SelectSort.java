@@ -18,7 +18,7 @@ public class SelectSort extends AbstractBaseSort {
     }
 
     @Override
-    void sort(int[] source, boolean asc) {
+    public void sort(int[] source, boolean asc) {
         for (int i = 0; i < source.length; i++) {
             // 1. 选择第一个值做最小/大值
             int limitValue = source[i];

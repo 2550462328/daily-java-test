@@ -24,7 +24,7 @@ public class QuickSort extends AbstractBaseSort {
     }
 
     @Override
-    void sort(int[] source, boolean asc) {
+    public void sort(int[] source, boolean asc) {
         binarySort(source, 0, source.length - 1);
     }
 
