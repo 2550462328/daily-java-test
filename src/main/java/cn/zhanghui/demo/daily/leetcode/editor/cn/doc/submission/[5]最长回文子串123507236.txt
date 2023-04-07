@@ -1,0 +1,35 @@
+class Solution {
+       private  int pLen;
+    private  int pIndex;
+    public String longestPalindrome(String target) {
+                int m = target.length();
+
+        if (m < 2) {
+            return target;
+        }
+        char[] chars = target.toCharArray();
+
+        for (int i = 0; i < m; i++) {
+            computeHelper(i, i, chars);
+            computeHelper(i, i + 1, chars);
+        }
+
+        return target.substring(pIndex,pIndex + pLen);
+    }
+
+        private  void computeHelper(int l, int r, char[] chars) {
+
+        while (l >= 0 && r < chars.length && chars[l] == chars[r]) {
+            l--;
+            r++;
+        }
+
+        // 取当前回文串长度和历史最大长度的较大值
+        if (pLen < r - l - 1) {
+            pLen = r - l - 1;
+            pIndex = l + 1;
+        }
+    }
+}
+//runtime:9 ms
+//memory:38.5 MB

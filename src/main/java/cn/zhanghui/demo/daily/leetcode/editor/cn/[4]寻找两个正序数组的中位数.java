@@ -40,11 +40,11 @@
 package cn.zhanghui.demo.daily.leetcode.editor.cn;
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution4 {
     public static void main(String[] args) {
         int[] nums1 = {1, 3};
         int[] nums2 = {2, 7};
-        System.out.println(new Solution().findMedianSortedArrays(nums1, nums2));
+        System.out.println(new Solution4().findMedianSortedArrays(nums1, nums2));
     }
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
