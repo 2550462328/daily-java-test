@@ -37,11 +37,49 @@
 //
 // Related Topics 数组 二分查找 分治 👍 6435 👎 0
 
+package cn.zhanghui.demo.daily.leetcode.editor.cn;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+    public static void main(String[] args) {
+        int[] nums1 = {1, 3};
+        int[] nums2 = {2, 7};
+        System.out.println(new Solution().findMedianSortedArrays(nums1, nums2));
+    }
 
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        if (nums1.length == 0) {
+            int length = nums2.length;
+            return length % 2 == 0 ? (nums2[length / 2] + nums2[length / 2 - 1]) / 2.0 : nums2[length / 2];
+        }
+        if (nums2.length == 0) {
+            int length = nums1.length;
+            return length % 2 == 0 ? (nums1[length / 2] + nums1[length / 2 - 1]) / 2.0 : nums1[length / 2];
+        }
+
+        int total = nums1.length + nums2.length;
+        int idx1 = 0, idx2 = 0;
+        int prev = 0, cur = 0;
+        boolean isEven = total % 2 == 0;
+
+        while (idx1 + idx2 <= total / 2) {
+            prev = cur;
+            if(idx1 >= nums1.length){
+                cur = nums2[idx2++];
+            }else if(idx2 >= nums2.length){
+                cur = nums1[idx1++];
+            }else if(nums1[idx1] < nums2[idx2]){
+                cur = nums1[idx1++];
+            }else{
+                cur = nums2[idx2++];
+            }
+        }
+
+        if(isEven){
+            return (prev + cur) / 2.0;
+        }else{
+            return cur;
+        }
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
