@@ -31,16 +31,14 @@
 // Related Topics 字符串 动态规划 👍 6367 👎 0
 package cn.zhanghui.demo.daily.leetcode.editor.cn;
 
-import org.apache.commons.lang.StringUtils;
-
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution5 {
     private int lsIndex;
     private int lsLength;
 
     public static void main(String[] args) {
         String s = "asa";
-        System.out.println(new Solution().longestPalindrome(s));
+        System.out.println(new Solution5().longestPalindrome(s));
     }
 
     /**
