@@ -1,0 +1,67 @@
+class Solution {
+    public int myAtoi(String str) {
+        int i = 0;
+
+        if (str.length() == 0) {
+            return 0;
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        char c;
+        boolean hasNotZero = false;
+
+        boolean zeroStart = false;
+
+        while (i < str.length()) {
+            c = str.charAt(i);
+            if (!zeroStart && sb.length() == 0) {
+                if (c == '+' || c == '-' || (Character.isDigit(c) && c > '0')) {
+                    sb.append(c);
+                    if((Character.isDigit(c) && c > '0')){
+                        hasNotZero = true;
+                    }
+                } else if(c == '0'){
+                    zeroStart = true;
+                }else if (c != ' ' && c != '0') {
+                    return 0;
+                }
+            } else if (Character.isDigit(c)) {
+                if (!hasNotZero && c > '0') {
+                    hasNotZero = true;
+                }
+                if (hasNotZero) {
+                    sb.append(c);
+                    if (sb.length() > 11) {
+                        if (sb.indexOf("-") != -1) {
+                            return Integer.MIN_VALUE;
+                        } else {
+                            return Integer.MAX_VALUE;
+                        }
+                    }
+                }
+            }else{
+                break;
+            }
+            i++;
+        }
+
+        String sbString = sb.toString();
+
+        if(sbString.length() == 0 ||"+".equals(sbString) || "-".equals(sbString)){
+            return 0;
+        }
+
+        long sbLong = Long.valueOf(sbString);
+
+        if (sbLong > Integer.MAX_VALUE) {
+            return Integer.MAX_VALUE;
+        } else if (sbLong < Integer.MIN_VALUE) {
+            return Integer.MIN_VALUE;
+        } else {
+            return (int) sbLong;
+        }
+    }
+}
+//runtime:3 ms
+//memory:39 MB
