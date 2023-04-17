@@ -1,0 +1,45 @@
+class Solution {
+    public boolean isMatch(String s, String p) {
+        char[] source = s.toCharArray();
+        char[] pattern = p.toCharArray();
+
+        int si = 0, pi = 0;
+        if (pattern[pi] == '*') return false;
+
+        return match(source, pattern, si, pi, ' ', false,false);
+    }
+
+    private boolean match(char[] source, char[] pattern, int si, int pi, char prev, boolean isNext, boolean isStarted) {
+        if(pi >= pattern.length && (si >= source.length || isNext)){
+            return true;
+        }else if(pi >= pattern.length || si >= source.length){
+            return false;
+        }
+        if (pattern[pi] == '.' || pattern[pi] == source[si]) {
+            prev = pattern[pi];
+            isStarted = true;
+            return match(source, pattern, ++si, ++pi, prev, false,isStarted);
+        } else if (pattern[pi] == '*' && (prev == '.' || source[si] == prev)) {
+            return match(source, pattern, ++si, ++pi, prev, true,isStarted);
+        } else if (pattern[pi] == '*') {
+            prev = pattern[pi];
+            return match(source, pattern, si, ++pi, prev, false,isStarted);
+        } else if (isNext && (prev == '.' || source[si] == prev)) {
+            return match(source, pattern, ++si, pi, prev, true, isStarted);
+        } else if(!isStarted){
+            prev = pattern[pi];
+            return match(source, pattern, ++si, ++pi, prev, false,false);
+        }else{
+            return false;
+        }
+    }
+}
+
+//total_testcases:354
+//total_correct:266
+//input_formatted:"aaa"
+"ab*ac*a"
+//expected_output:true
+//code_output:false
+//last_testcase:"aaa"
+"ab*ac*a"

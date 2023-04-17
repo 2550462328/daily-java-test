@@ -1,0 +1,111 @@
+> Problem: [10. 正则表达式匹配](https://leetcode.cn/problems/regular-expression-matching/description/)
+
+[TOC]
+
+# 复杂度
+
+- dp时间复杂度:
+
+> 添加时间复杂度, 示例： $O(n^2)$
+
+- dp空间复杂度:
+
+> 添加空间复杂度, 示例： $O(n^2)$
+
+# Code
+
+* []
+
+```Java
+<!-- 暴力递归 -->
+class Solution {
+    public boolean isMatch(String s, String p) {
+        <!-- s表示原始串，p表示匹配串 -->
+        char[] str = s.toCharArray();
+        char[] exp = p.toCharArray();
+        
+        return process(str, exp, 0, 0);
+    }
+    <!-- process表示原始串从[si,str.length-1]，
+        匹配串从[ei,exp.length-1]范围内能否匹配成功 -->
+    public boolean process(char[] str, char[] exp, int si , int ei){
+        <!-- 现在两个串都是空串，一定对 -->
+        if(si == str.length && ei == exp.length) return true;
+        <!-- 只有匹配串是空串 -->
+        else if(ei == exp.length) return false;
+        <!-- 只有原始串是空串,此时如果匹配串为X*Y*Z*..F*的格式
+            也可能匹配成功,因为X*可以变成0个X从而消掉 -->
+        else if(si == str.length){
+            if(ei+1 < exp.length && exp[ei+1] == '*'){
+                return process(str, exp, si, ei + 2);
+            }
+            return false;
+        }
+        // 都不为空，三种情况
+        boolean ans = false;
+        // 1. ei + 1 != '*'
+        if(ei+1==exp.length || exp[ei+1]!='*'){
+            ans = (str[si] == exp[ei] || exp[ei] == '.') && 
+                  process(str, exp, si + 1, ei + 1);
+        }else{
+            // 2. ei + 1 == '*'
+            /* a) 直接让 exp[ei] 和 exp[ei+1] 组合起来，
+                  变成 0 个 exp[ei],直接消除
+            */
+            boolean p1 = process(str, exp, si, ei + 2);
+            // b) 保留 exp[ei] 和 exp[ei+1] , 继续匹配后面的 str[si+1]
+            boolean p2 = false;
+            p2 = (str[si] == exp[ei] || exp[ei] == '.') && 
+                 process(str, exp, si + 1, ei);
+            ans = p1 || p2;
+        }
+        return ans;
+    }
+}
+```
+
+* []
+
+```Java
+<!-- 根据暴力递归的位置索引关系，改为动态规划 -->
+class Solution {
+    public boolean isMatch(String s, String p) {
+        char[] str = s.toCharArray();
+        char[] exp = p.toCharArray();
+        boolean[][] dp = new boolean[str.length+1][exp.length+1];
+        return process(str, exp, 0, 0,dp);
+    }
+    public boolean process(char[] str, char[] exp, int si , int ei, boolean[][] dp){
+        <!-- 根据暴力递归的递归base case可以得出,最后一个元素一定是true -->
+        dp[str.length][exp.length] = true;
+        <!-- 最后一列都是false(除了最后一个元素) -->
+        for(int i = 0 ; i < str.length ; ++i){
+            dp[i][exp.length] = false;
+        }
+        <!-- 最后一行的元素依赖向右数第二个元素 -->
+        for(int j = exp.length - 1 ; j >= ei; j--){
+            dp[str.length][j] = (j+1<exp.length && exp[j+1]=='*') ? dp[str.length][j+2] : false;
+        }
+        // 都不为空，三种情况
+<!-- 由暴力递归的依赖关系可以看出来,
+    dp[i][j]依赖dp[i][j+2]、dp[i+1][j+1]、dp[i+1][j],
+    而前面已经根据暴力递归的base case 填上了二维数组最后一行和最后一列的数据
+    所以二维数组dp从右下向左上开始填数,而不是从左上到右下 -->
+        for(int i = str.length - 1 ; i >= si ; i--){
+            for(int j = exp.length - 1 ; j >= ei ; j--){
+                if(j+1==exp.length || exp[j+1]!='*'){
+                    dp[i][j] = (str[i] == exp[j] || exp[j] == '.') &&
+                               dp[i+1][j+1];
+                }else{
+                    boolean p1 = dp[i][j+2];
+                    boolean p2 = (str[i] == exp[j] || exp[j] == '.') && 
+                                 dp[i+1][j];
+                    dp[i][j] = p1 || p2;
+                }
+            }
+        }
+        return dp[si][ei];
+    }
+}
+```
+

@@ -1,0 +1,38 @@
+用动态规划的思想，递推判断当前的字符串 s 和正则表达式 p 的匹配情况，用一个二维布尔数组 dp 来保存当前的匹配情况，其中 dp[i][j] 表示 s 的前 i 个字符和 p 的前 j 个字符是否匹配。
+
+初始状态是 dp[0][0] = true，因为两个空字符串是匹配的。然后递推每一位，分为两种情况：
+
+p.charAt(j - 1) == s.charAt(i - 1)，这种情况是两个字符相同，或者 p 中的字符是 .，都可以匹配，这时候 dp[i][j] = dp[i - 1][j - 1]
+
+p.charAt(j - 1) == '*'，这种情况是因为 * 可以代表 0 到多个前面的字符，所以我们只需要判断前面的匹配情况即可，可以分为以下三种情况：
+
+匹配 0 个前面的字符，此时 dp[i][j] = dp[i][j - 2]
+匹配 1 个前面的字符，此时 dp[i][j] = dp[i - 1][j - 1]
+匹配 2 个及以上的前面的字符，此时 dp[i][j] = dp[i - 1][j]
+最后判断 dp[s.length()][p.length()] 的值即可。
+
+当然也可以通过优化使得时间和空间复杂度更优，例如递归解法，但是递归解法有可能会爆栈，而且代码实现比较困难。
+
+* 
+
+```
+class Solution {
+public boolean isMatch(String s, String p) {
+int m = s.length();
+int n = p.length();
+boolean[][] dp = new boolean[m + 1][n + 1];
+dp[0][0] = true;
+for (int i = 0; i <= m; i++) {
+for (int j = 1; j <= n; j++) {
+if (p.charAt(j - 1) == '*') {
+dp[i][j] = dp[i][j - 2] || (i > 0 && (s.charAt(i - 1) == p.charAt(j - 2) || p.charAt(j - 2) == '.') && dp[i - 1][j]);
+} else {
+dp[i][j] = i > 0 && dp[i - 1][j - 1] && (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '.');
+}
+}
+}
+return dp[m][n];
+}
+}
+```
+
