@@ -1,0 +1,43 @@
+class Solution {
+    private Map<Character,Integer> singleMap = new HashMap<>();
+    private Map<String,Integer> doubleMap = new HashMap<>();
+
+    {
+        singleMap.put('I',1);
+        singleMap.put('V',5);
+        singleMap.put('X',10);
+        singleMap.put('L',50);
+        singleMap.put('C',100);
+        singleMap.put('D',500);
+        singleMap.put('M',1000);
+
+        doubleMap.put("IV",4);
+        doubleMap.put("IX",9);
+        doubleMap.put("XL",40);
+        doubleMap.put("XC",90);
+        doubleMap.put("CD",400);
+        doubleMap.put("CM",900);
+    }
+
+    public int romanToInt(String s){
+
+        int result = 0;
+
+        for(int i = 0; i < s.length(); i++){
+            if(i != s.length() - 1 ){
+                String appendString = String.valueOf(s.charAt(i)) + String.valueOf(s.charAt(i+1));
+                if(doubleMap.containsKey(appendString)) {
+                    result += doubleMap.get(appendString);
+                    i++;
+                }else{
+                    result += singleMap.get(s.charAt(i));
+                }
+            }else{
+                result += singleMap.get(s.charAt(i));
+            }
+        }
+        return result;
+    }
+}
+//runtime:14 ms
+//memory:38.7 MB
