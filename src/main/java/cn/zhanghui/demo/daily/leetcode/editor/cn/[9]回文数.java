@@ -50,7 +50,7 @@ package cn.zhanghui.demo.daily.leetcode.editor.cn;
 class Solution9 {
 
     /**
-     * 构建逆序回文串
+     * 推荐 构建逆序回文串
      *
      * @param x
      * @return

@@ -50,6 +50,13 @@ package cn.zhanghui.demo.daily.leetcode.editor.cn;
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution10 {
 
+    /**
+     * 推荐 动态规划法   [i,j]能不能匹配 取决于 [i-1,j-1]能不能匹配 以及 j的取值（. * 字符）
+     *
+     * @param s
+     * @param p
+     * @return
+     */
     public boolean isMatch(String s, String p) {
         int m = s.length();
         int n = p.length();
@@ -70,6 +77,13 @@ class Solution10 {
         return dp[m][n];
     }
 
+    /**
+     * 暴力破解法 基本能满足一般需求
+     *
+     * @param s
+     * @param p
+     * @return
+     */
     public boolean isMatch1(String s, String p) {
         char[] source = s.toCharArray();
         char[] pattern = p.toCharArray();

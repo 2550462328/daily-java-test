@@ -1,0 +1,65 @@
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+                for(String str : strs){
+                                if(str.length() == 0){
+                return "";
+            }
+            insertNode(str);
+        }
+        return get();
+    }
+        private Node head = new Node();
+
+    private boolean isInit = false;
+
+    public void insertNode(String str) {
+
+        Node temp = head;
+
+        if(!isInit){
+            for (int i = 0; i < str.length(); i++) {
+                temp.childNode = new Node(str.charAt(i));
+                temp = temp.childNode;
+            }
+            isInit = true;
+        }else{
+            int index = 0;
+
+            while(temp.childNode != null && index < str.length()){
+                if (temp.childNode.value != str.charAt(index)) {
+                    temp.childNode = null;
+                    break;
+                }
+                temp = temp.childNode;
+                                if(++index == str.length()){
+                    temp.childNode = null;
+                }
+            }
+        }
+    }
+
+    public String get(){
+        Node temp = head;
+        StringBuilder sb = new StringBuilder();
+
+        while(temp.childNode != null){
+            sb.append(temp.childNode.value);
+            temp = temp.childNode;
+        }
+        return sb.toString();
+    }
+
+    class Node {
+        private Character value;
+
+        private Node childNode;
+
+        public Node(Character value){
+            this.value = value;
+        }
+
+        public Node(){}
+    }
+}
+//runtime:1 ms
+//memory:37.2 MB

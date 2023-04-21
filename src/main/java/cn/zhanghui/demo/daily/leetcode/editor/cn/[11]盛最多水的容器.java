@@ -39,6 +39,11 @@ package cn.zhanghui.demo.daily.leetcode.editor.cn;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution11 {
+    /**
+     * 左右摇晃法 随着x轴越来越小 要寻找的y轴得越来越大 才有必要进行计算体积
+     * @param height
+     * @return
+     */
     public int maxArea(int[] height) {
         int max = 0, min = 0;
         int xi = 0, yi = height.length - 1;

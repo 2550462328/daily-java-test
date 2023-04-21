@@ -84,6 +84,11 @@ package cn.zhanghui.demo.daily.leetcode.editor.cn;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution8 {
+    /**
+     * 暴力求解法 值得注意的是判断整数越界问题 可以 提前判断 比如判断 Integer.MAX_VALUE / 10 和当前值可匹配 如果相等则判断末尾数字
+     * @param s
+     * @return
+     */
     public int myAtoi(String s) {
         char[] chars = s.toCharArray();
         int negative = 0;

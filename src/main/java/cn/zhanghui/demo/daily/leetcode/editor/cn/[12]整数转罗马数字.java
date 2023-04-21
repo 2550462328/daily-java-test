@@ -105,6 +105,12 @@ class Solution12 {
             {"", "M", "MM", "MMM"}
     };
 
+    /**
+     * 投机取巧法 针对范围比较小的值可以这么判断 不推荐
+     *
+     * @param num
+     * @return
+     */
     public String intToRoman(int num) {
         StringBuilder roman = new StringBuilder();
         roman
@@ -115,6 +121,12 @@ class Solution12 {
         return roman.toString();
     }
 
+    /**
+     * 推荐  不断做减法 从 1000减到 1
+     *
+     * @param num
+     * @return
+     */
     public String intToRoman2(int num) {
         int[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
         String[] reps = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
@@ -129,6 +141,12 @@ class Solution12 {
         return res;
     }
 
+    /**
+     * 暴力破解法 针对每个字符进行解析
+     *
+     * @param num
+     * @return
+     */
     public String intToRoman1(int num) {
 
         int multi = 3;
