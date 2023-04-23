@@ -1,0 +1,46 @@
+### 解题思路
+
+排序后，三指针法
+
+### 代码
+
+* java
+
+```java
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> ans = new ArrayList<List<Integer>>();
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > 0) {
+                return ans;
+            }
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            int j = i + 1;
+            int k = nums.length - 1;
+            while (j < k) {
+                int sum = nums[i] + nums[j] + nums[k];
+                if (sum > 0) {
+                    k--;
+                } else if (sum < 0) {
+                    j++;
+                } else {
+                    ans.add(Arrays.asList(nums[i], nums[j], nums[k]));
+                    while (j < k && nums[k] == nums[k - 1]) {
+                        k--;
+                    }
+                    while (j < k && nums[j] == nums[j + 1]) {
+                        j++;
+                    }
+                    k--;
+                    j++;
+                }
+            }
+        }
+        return ans;
+    }
+}
+```
+

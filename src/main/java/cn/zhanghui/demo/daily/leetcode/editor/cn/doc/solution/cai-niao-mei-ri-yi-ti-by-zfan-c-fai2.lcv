@@ -1,0 +1,39 @@
+### 解题思路
+
+双指针，固定头指针，中部指针和尾部指针移动，只对头指针有for循环，达到遍历所有元素的效果
+
+### 代码
+
+* java
+
+```java
+class Solution {
+  public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> list = new ArrayList<>();
+        int l, r, sum, n = nums.length;
+        Arrays.sort(nums);
+        
+        for(int i = 0; i < n; i++){
+            if(i != 0 && nums[i] == nums[i - 1]) continue;
+            else if(nums[i] > 0) return list;
+            else{
+                l = i + 1;
+                r = n - 1;
+                while(l < r){
+                    sum = nums[i] + nums[l] + nums[r];
+                    if(sum == 0){
+                        list.add(Arrays.asList(nums[i], nums[l++], nums[r--])); 
+                        while(l < r && nums[l] == nums[l - 1]) l++;
+                        while(l < r && nums[r] == nums[r + 1]) r--;
+                    }
+                    else if(sum < 0) l++;
+                    else r--;              
+                }
+            }  
+        }
+        return list;
+    }
+
+}
+```
+
