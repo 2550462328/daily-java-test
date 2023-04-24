@@ -54,11 +54,11 @@ package cn.zhanghui.demo.daily.leetcode.editor.cn;
 import java.util.*;
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution15 {
 
     public static void main(String[] args) {
         int[] nums = {0, 0, 0};
-        System.out.println(new Solution().threeSum(nums));
+        System.out.println(new Solution15().threeSum(nums));
     }
 
     public List<List<Integer>> threeSum(int[] nums) {
