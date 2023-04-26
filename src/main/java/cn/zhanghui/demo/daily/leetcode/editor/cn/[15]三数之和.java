@@ -61,45 +61,45 @@ class Solution15 {
         System.out.println(new Solution15().threeSum(nums));
     }
 
-    public List<List<Integer>> threeSum(int[] nums) {
-        int n = nums.length;
-        Arrays.sort(nums);
-        List<List<Integer>> ans = new ArrayList<List<Integer>>();
-        // 枚举 a
-        for (int first = 0; first < n; ++first) {
-            // 需要和上一次枚举的数不相同
-            if (first > 0 && nums[first] == nums[first - 1]) {
-                continue;
-            }
-            // c 对应的指针初始指向数组的最右端
-            int third = n - 1;
-            int target = -nums[first];
-            // 枚举 b
-            for (int second = first + 1; second < n; ++second) {
-                // 需要和上一次枚举的数不相同
-                if (second > first + 1 && nums[second] == nums[second - 1]) {
-                    continue;
-                }
-                // 需要保证 b 的指针在 c 的指针的左侧
-                while (second < third && nums[second] + nums[third] > target) {
-                    --third;
-                }
-                // 如果指针重合，随着 b 后续的增加
-                // 就不会有满足 a+b+c=0 并且 b<c 的 c 了，可以退出循环
-                if (second == third) {
-                    break;
-                }
-                if (nums[second] + nums[third] == target) {
-                    List<Integer> list = new ArrayList<Integer>();
-                    list.add(nums[first]);
-                    list.add(nums[second]);
-                    list.add(nums[third]);
-                    ans.add(list);
-                }
-            }
-        }
-        return ans;
-    }
+//    public List<List<Integer>> threeSum(int[] nums) {
+//        int n = nums.length;
+//        Arrays.sort(nums);
+//        List<List<Integer>> ans = new ArrayList<List<Integer>>();
+//        // 枚举 a
+//        for (int first = 0; first < n; ++first) {
+//            // 需要和上一次枚举的数不相同
+//            if (first > 0 && nums[first] == nums[first - 1]) {
+//                continue;
+//            }
+//            // c 对应的指针初始指向数组的最右端
+//            int third = n - 1;
+//            int target = -nums[first];
+//            // 枚举 b
+//            for (int second = first + 1; second < n; ++second) {
+//                // 需要和上一次枚举的数不相同
+//                if (second > first + 1 && nums[second] == nums[second - 1]) {
+//                    continue;
+//                }
+//                // 需要保证 b 的指针在 c 的指针的左侧
+//                while (second < third && nums[second] + nums[third] > target) {
+//                    --third;
+//                }
+//                // 如果指针重合，随着 b 后续的增加
+//                // 就不会有满足 a+b+c=0 并且 b<c 的 c 了，可以退出循环
+//                if (second == third) {
+//                    break;
+//                }
+//                if (nums[second] + nums[third] == target) {
+//                    List<Integer> list = new ArrayList<Integer>();
+//                    list.add(nums[first]);
+//                    list.add(nums[second]);
+//                    list.add(nums[third]);
+//                    ans.add(list);
+//                }
+//            }
+//        }
+//        return ans;
+//    }
 
     /**
      * 在算法复杂度是 n ^ 3的情况下，使用 n ^2 排序算法先排序再计算也未尝不可
@@ -107,7 +107,7 @@ class Solution15 {
      * @param nums
      * @return
      */
-    public List<List<Integer>> threeSum1(int[] nums) {
+    public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
 
         if (nums == null || nums.length < 3) {
@@ -116,47 +116,53 @@ class Solution15 {
 
         Arrays.sort(nums);
 
-        if (nums[0] > 0) {
-            return result;
-        }
-
         int mid = 0;
-
         while (mid < nums.length - 2) {
+            while (mid > 0 & mid < nums.length - 2 && nums[mid] == nums[mid - 1]) {
+                mid++;
+            }
+            if (mid == nums.length - 2) {
+                break;
+            }
+            if ((long) nums[mid] + nums[mid + 1] + nums[mid + 2] > 0) {
+                break;
+            }
+            if ((long) nums[mid] + nums[nums.length - 1] + nums[nums.length - 2] < 0) {
+                mid++;
+                continue;
+            }
             int left = mid + 1, right = nums.length - 1;
             int surplus = -nums[mid];
             while (left < right) {
                 if (nums[left] + nums[right] == surplus) {
-                    int temp1 = nums[left];
-                    int temp2 = nums[right];
-                    while (left < right && nums[left] == temp1) {
-                        left++;
-                    }
-                    while (right > left && nums[right] == temp2) {
-                        right--;
-                    }
                     List<Integer> findOne = new ArrayList<>();
                     findOne.add(nums[mid]);
-                    findOne.add(temp1);
-                    findOne.add(temp2);
+                    findOne.add(nums[left]);
+                    findOne.add(nums[right]);
 
                     result.add(findOne);
+
+                    left++;
+                    right--;
+                    while (left < right && nums[left] == nums[left - 1]) {
+                        left++;
+                    }
+                    while (left < right && nums[right] == nums[right + 1]) {
+                        right--;
+                    }
                 } else if (nums[right] + nums[left] > surplus) {
-                    int temp = nums[right];
-                    while (right > left && nums[right] == temp) {
+                    right--;
+                    while (left < right && nums[right] == nums[right + 1]) {
                         right--;
                     }
                 } else {
-                    int temp = nums[left];
-                    while (left < right && nums[left] == temp) {
+                    left++;
+                    while (left < right && nums[left] == nums[left - 1]) {
                         left++;
                     }
                 }
             }
-            int temp = nums[mid];
-            while (mid < nums.length - 2 && nums[mid] == temp) {
-                mid++;
-            }
+            mid++;
         }
         return result;
     }
