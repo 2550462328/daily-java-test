@@ -1,0 +1,40 @@
+class Solution {
+    private Map<Character, Character> map = new HashMap<>();
+    {
+        map.put('[',']');
+        map.put('{','}');
+        map.put('(',')');
+    }
+
+    /**
+     * 使用栈来判断字符串是否符合
+     */
+    public boolean isValid(String s) {
+
+        if(s.length() % 2 == 1){
+            return false;
+        }
+
+        Deque<Character> stack = new LinkedList<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (isMapKey(s.charAt(i))) {
+                stack.push(s.charAt(i));
+            } else if (stack.isEmpty()) {
+                return false;
+            } else if (map.get(stack.poll()) != s.charAt(i)) {
+                return false;
+            }
+        }
+
+        if(!stack.isEmpty()){
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isMapKey(Character chr){
+        return map.keySet().contains(chr);
+    }
+}
+//runtime:2 ms
+//memory:36.9 MB
