@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution22 {
 
     public List<String> generateParenthesis(int n) {
         List<String> ans = new ArrayList<String>();
