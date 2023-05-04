@@ -48,8 +48,11 @@
  * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+package cn.zhanghui.demo.daily.leetcode.editor.cn;
 
-class Solution {
+import cn.zhanghui.demo.daily.leetcode.editor.cn.component.ListNode;
+
+class Solution21 {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
 
         if (list1 == null) {
