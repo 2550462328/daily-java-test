@@ -58,6 +58,10 @@
  * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+package cn.zhanghui.demo.daily.leetcode.editor.cn;
+
+import cn.zhanghui.demo.daily.leetcode.editor.cn.component.ListNode;
+import java.util.PriorityQueue;
 
 class Solution23 {
     class Status implements Comparable<Status> {
