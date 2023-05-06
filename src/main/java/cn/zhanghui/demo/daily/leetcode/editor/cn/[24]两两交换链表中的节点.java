@@ -49,6 +49,8 @@
 
 package cn.zhanghui.demo.daily.leetcode.editor.cn;
 
+import cn.zhanghui.demo.daily.leetcode.editor.cn.component.ListNode;
+
 import java.util.LinkedList;
 
 class Solution24 {
