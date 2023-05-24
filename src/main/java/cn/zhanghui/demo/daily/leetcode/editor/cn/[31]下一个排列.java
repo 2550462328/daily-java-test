@@ -54,10 +54,10 @@
 package cn.zhanghui.demo.daily.leetcode.editor.cn;
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution31 {
     public static void main(String[] args) {
         int[] nums = {1, 2, 3};
-        new Solution().nextPermutation(nums);
+        new Solution31().nextPermutation(nums);
     }
 
     public void nextPermutation(int[] nums) {
