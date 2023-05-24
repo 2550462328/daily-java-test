@@ -46,7 +46,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution32 {
     /**
      * 动态规划 计算从i的起点往前的最大跨度
      * 需要考虑两种场景 1）i为) 且 i-1为( 2) i为) 且 i - dp[i-1] 为(
