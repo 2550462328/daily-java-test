@@ -1,0 +1,367 @@
+**视频讲解**：[《算法不好玩》二分查找专题](https://www.bilibili.com/video/BV1kt4y1p7FY/?spm_id_from=333.999.0.0) （已经录制的部分，能够帮助大家完全搞懂二分查找算法，非常适合初学的朋友们）。
+
+**2022 年 12 月 27 日补充**：有时间的话请大家先看上面的视频，2 倍速看完就好，知道前因后果以后，再做题就更有方向了。**文字题解的内容还是更偏向于做题，直接给出了最优解，没有一步一步探索的过程**。**这里帮大家归纳一下重点**：有一些问题可以在循环之中找到答案，所以写法是 `while(left <= right)` ，循环体内是三个分支。更多的问题需要等到退出循环以后得到答案，所以写法是 `while(left < right)` ，循环体内是两个分支。
+
+> **实际上「二分查找」没有多少东西，一点儿也不难，觉得「二分查找」难写对的朋友，请认认真真做几个「二分查找」的问题，弄清楚每一行代码的意思，遇到死循环的时候仔细调试，弄清楚逻辑关系，而不要套别人给你写好的模版。**
+
+有很多问题 `mid` 有可能是问题的答案，所以不能排除掉，所以你看到的代码是 `left = mid` 与 `right = mid`，不要有思维定式，代码一定要写成 `left = mid + 1` 或者 `right = mid - 1`，而应该看题目怎么说。看清问题比记忆模版重要得多，不同的问题答案不一样，如果题目的意思都没弄清楚，怎么解决问题。
+
+> 如果你在学习二分查找的过程中有很多问题，你可以先记下来，不用急着与解决它们，等你做了足够多的问题，有了足够的思考以后，你的问题会慢慢得到解答，我的学习过程也是这样，这个过程是很充实的。
+
+**阅读提示**：内容比较多，核心思想帮大家归纳一下。如果没有时间看，建议把后面的问题做一下。
+
+> 题解核心内容：所有模板都一样，不可以套模板，而应该 **仔细看题（解题的关键在认真读题）**，分析清楚题目要找的答案需要满足什么性质。采用两边夹的方式，每一轮把待搜索区间分成两个部分，排除掉一定不是答案的区间，最后左右指针重合的地方就是我们要找的元素。
+
+**重要的事情说三遍**：
+
+- **如果你看我写的「二分查找」题解，请忘记掉「左闭右开」这件事情，它会对你有所干扰**；
+- **如果你看我写的「二分查找」题解，请忘记掉「左闭右开」这件事情，它会对你有所干扰**；
+- **如果你看我写的「二分查找」题解，请忘记掉「左闭右开」这件事情，它会对你有所干扰**。
+
+**说明**：我所有的关于「二分查找」法的题解，都会明确地标注「下一轮搜索区间是什么」，进而设置左边界 `left` 和 右边界 `right`。在我写的「二分查找」题解里，`while(left < right)` **不表示** 循环不变量的区间定义是 `[left..right)`，也就是说，如果我分析出，下一轮搜索区间是 `[mid..10]`，我会设置 `right = 10`，而不会设置 `right =  11`。
+
+`while(left < right)` 只表示它本来的意思：在 `left < right` 进入循环体。**不要给它附加别的意思，这没有逻辑**。
+
+---
+
+**写在前面的话**：
+
+写对「二分查找」的重点，从来不在于「二分查找」我们用的是哪一个模板（所有的模板背后的逻辑都一样），更不在于我们设置的区间是「左闭右闭」还是「左开右闭」。而在于 **认真看题、仔细分析题意**，根据题目的条件和要求思考如何缩减区间，清楚地知道每一轮在什么样的情况下，搜索的范围是什么，进而设置左右边界。
+
+我们需要分析清楚题目的意思，分析清楚要找的答案需要满足什么性质。应该清楚模板具体的用法，**明白需要根据题意灵活处理、需要变通的地方，不可以认为每一行代码都是模板规定死的写法，不可以盲目套用、死记硬背**。
+
+二分查找只有一个思想，那就是：**逐步缩小搜索区间**。
+
+> 本题解向大家介绍的，使用 `left` 和 `right` 向中间靠拢的方法，有一个非常强的语义，那就是：**当 `left` 与 `right` 重合的时候，我们就找到了问题的答案**，使用这种写法有一个巨大的好处，那就是返回值不需要考虑返回 `left` 还是 `right`，因为退出循环以后，它们是重合的。
+
+重要的事情说三遍：
+
+- 不是因为这种方法有用，而是因为很多问题就这么设计来着，**一定要等到最后才能确定问题的解，在很多时候，不能在循环体中找到答案。**
+- 不是因为这种方法有用，而是因为很多问题就这么设计来着，**一定要等到最后才能确定问题的解，在很多时候，不能在循环体中找到答案。**
+- 不是因为这种方法有用，而是因为很多问题就这么设计来着，**一定要等到最后才能确定问题的解，在很多时候，不能在循环体中找到答案。**
+
+这一类问题解决的过程如下图所示：
+
+![binary-search-裁剪.gif](https://pic.leetcode-cn.com/1639968622-EzQzeJ-binary-search-%E8%A3%81%E5%89%AA.gif)
+
+在做题的过程中，会遇到两个难点：
+
+1. 取 `mid` 的时候，有些时候需要 `+1`，这是因为需要避免死循环；
+2. 只把区间分成两个部分，这是因为：只有这样，退出循环的时候才有 `left` 与 `right` 重合，我们才敢说，找到了问题的答案。
+
+这两个难点，在练习的过程中，会逐渐清晰，不用着急一下子搞懂，事实上也不难理解。
+
+本题解分为三个部分：
+
++ 第一部分：本题题解。
+
+> 如果只想看本题（「力扣」第 35 题）怎么解的，可以只看这里。
+
++ 第二部分：二分查找常见问题回答。
+
+> 重点概括了评论区常见的问题。
+
++ 第三部分：二分查找题解列表（包含文字题解和视频题解）。
+
+> 我花了很多时间做的教程，详细讲解了我是如何分析这些问题的，相信一定对你有帮助。
+
+---
+
+# 第一部分：本题题解
+
+> 这一部分一定要分析清楚：
+> + 题目要找的元素是：第一个大于等于 `target` 的元素的下标；
+> + 数组的长度 `len` 也有可能是问题的答案，「参考代码 2」设置 `right = len` 不是因为设置区间是「左闭右开」，而是因为 `len` 本来就有可能是问题的答案。
+>
+> 上面 2 个小点，都需要仔细分析题意和几个示例得到，任何模板都不能回答这样的问题。
+
+## 题意分析
+
+根据示例，分析题目要我们返回的「插入元素的位置」是什么。
+
+根据「示例 3」：
+
+* 
+
+```
+输入: [1, 3, 5, 6], 7
+输出: 4
+```
+
+我们知道：如果目标元素 **严格大于** 输入数组中的最后一个元素，题目需要我们返回数组的最后一个元素的下标 +1（也就是数组的长度）。
+
+又根据「示例 2」：
+
+* 
+
+```
+输入: [1, 3, 5, 6], 2
+输出: 1
+```
+
+我们知道：**题目要我们返回第 $1$ 个 大于等于 目标元素 `2` 的下标（分析出这一点非常重要）**，因此返回 `1`。等于的情况可以看「示例 1」。
+
+## 思路分析
+
+在有序数组中查找，可以使用「二分查找」。
+
+根据「题意分析」中对示例的描述：
+
++ 情况 1：**如果当前 `mid` 看到的数值严格小于 `target`，那么 `mid` 以及 `mid` 左边的所有元素就一定不是「插入元素的位置」**，因此下一轮搜索区间是 `[mid + 1..right]`，下一轮把 `left` 移动到 `mid + 1` 位置，因此设置 `left = mid + 1`；
++ 情况 2：否则，如果 `mid` 看到的数值大于等于 `target`，那么 `mid` **可能是「插入元素的位置」**，`mid` 的右边一定不存在「插入元素的位置」。如果 `mid` 的左边不存在「插入元素的位置」，我们才可以说 `mid` 是「插入元素的位置」。因此下一轮搜索区间是 `[left..mid]`，下一轮把 `right` 移动到 `mid` 位置，因此设置 `right = mid`。
+
+**说明**：上面的两点中，「情况 2」其实不用分析得那么细致， 因为只要「情况 1」的区间分析是正确的，「情况 2」一定是「情况 1」得到的区间的反面区间。
+
+**参考代码 1**：
+
+* []
+
+```Java
+public class Solution {
+
+    public int searchInsert(int[] nums, int target) {
+        int len = nums.length;
+        // 特殊判断
+        if (nums[len - 1] < target) {
+            return len;
+        }
+
+        // 程序走到这里一定有 nums[len - 1] >= target，插入位置在区间 [0..len - 1]
+        int left = 0;
+        int right = len - 1;
+        // 在区间 nums[left..right] 里查找第 1 个大于等于 target 的元素的下标
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] < target){
+                // 下一轮搜索的区间是 [mid + 1..right]
+                left = mid + 1;
+            } else {
+                // 下一轮搜索的区间是 [left..mid]
+                right = mid;
+            }
+        }
+        return left;
+    }
+}
+```
+
+**说明**：`while (left < right)` 表示当 `left` 与 `right` 重合的时候，搜索终止。**根据题意和示例**，区间 `nums[left..right]` 里一定存在「插入元素的位置」，且 `while` 循环里只把区间分成两个部分，退出循环的时候一定有 `left == right` 成立，因此返回 `left` 或者 `right` 都可以。
+
+**复杂度分析**：
+
++ 时间复杂度：$O(\log N)$，这里 $N$ 是输入数组的长度；
++ 空间复杂度：$O(1)$。
+
+既然 `len` 也有可能是答案，可以在初始化的时候，把 `right` 设置成 `len`，在一开始的时候就不需要特殊判断了。
+
+**参考代码 2**：
+
+* []
+
+```Java
+public class Solution {
+
+    public int searchInsert(int[] nums, int target) {
+        int len = nums.length;
+        int left = 0;
+        int right = len;
+        // 在区间 nums[left..right] 里查找第 1 个大于等于 target 的元素的下标
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] < target){
+                // 下一轮搜索的区间是 [mid + 1..right]
+                left = mid + 1;
+            } else {
+                // 下一轮搜索的区间是 [left..mid]
+                right = mid;
+            }
+        }
+        return left;
+    }
+}
+```
+
+**复杂度分析**：（同参考代码 1）
+
+---
+
+# 第二部分：二分查找常见问题回答
+
+**温馨提示**：
++ 以下内容有点多，但是都是非常简单直观的内容。我整理了在我的题解下网友的诸多疑问，进行了总结，希望大家能认真看看；
++ 真的踏踏实实做完一些二分查找的问题，已经有了足够的思考，就会觉得没有那么难。
+
+## 问题 1：为什么在你的题解里 `while (left < right)` 表示「左闭右闭」区间
+
+**回答**：`while (left < right)` 不表示搜索区间为「左闭右开」，也不表示搜索区间为「左闭右闭」， **它们没有因果关系**，`while (left < right)` 只表示它本来的意思：循环可以继续的条件是 `left < right` 。**边界如何设置，这一点完全是人为定义的**。
+
+表示一个区间，最直接的表示就是左闭右闭区间。例如：我们想表示搜索的范围是 `1, 2, 3, 4, 5, 6, 7, 8, 9` ，很自然地会表示成 `[1..9]` ，我们也会说这些数是 `1` 到 `9` 之间的数，包括 `1` 和 `9`。正常情况下，不会说：这些数在 `1` 到 `10` 之间，不包括 `10`；
+
+只看到 `while (left < right)` 里的 `<` ，不能说明右边界不能取到。真正看区间表示应该看左右边界到底如何设置，如果我们分析出下一轮搜索的范围是 `[left..mid]` 而设置 `right = mid + 1`，才表示搜索区间为「左闭右开」区间 。这是因为 `[left..right) = [left..mid + 1) = [left..mid]`。
+
+可以看到，任何一个「左闭右开」区间都对应一个「左闭右闭」区间。我们已经可以确切地知道要搜索的数的右边界是什么， 没有必要把右边界再 $+1$。
+
+**重点**：真正写对「二分查找」，从来不在于我们把区间写成了「左闭右开」还是「左闭右闭」，而是 **在于我们能够根据题意：得到某种单调性，和可以逐步缩小搜索规模的条件，进而准确地设计可以使得搜索区间缩小的条件**。
+
+## 问题 2：二分查找是不是要求数组一定是有序的？
+
+**回答**：不一定。
+
+「力扣」上有一些问题输入数组不是有序的，例如「旋转有序数组」「山脉数组」（题号在第三部分的习题列表里），这些问题题目给出的是「接近有序」的数组，依然可以使用「二分查找」，这是因为这些数组都有规律可循，可以根据看到的 `num[mid]` 的值，推测两侧元素的性质，进而 **缩小搜索区间**。
+
+还有一类问题，例如「力扣」第 287 题，**这一类题目不是在输入数组上做二分**，而是在输入数组的最小值 `min` 和最大值 `max` 组成的连续整数数组上查找一个数，即搜索区间是 `[min..max]`，这个区间是单调的。
+
+这一类问题的特点是：题目要我们找一个整数，这个整数的范围是确定的，可以使用「二分查找」，这样的问题叫「二分答案」。很多引入「二分查找」的例子，其实就是在做「二分答案」，《幸运 52》猜价格游戏，就是在用「二分查找」的思想猜到商品准确的价格。
+
+## 问题 3：为什么有一些二分查找取 `mid` 的时候，括号里要加 1?
+
+这是因为 `int mid = (left + right) / 2` 在区间里有偶数个元素的时候，`mid` 只能取到位于左边的中间数，要想取到位于右边的中间数，就需要在括号里加 1。
+
+为什么要取右边中间数呢？这是因为在区间里 **只有 $2$ 个元素的时候**，把 `[left..right]` 划分成 `[left..mid - 1]` 和 `[mid..right]` 这两个区间，`int mid = (left + right) / 2` 这种取法不能把搜索区间缩小。
+
+理解这件事情最典型的例子是「力扣」第 69 题，详细的分析和调试在 [这里](https://leetcode-cn.com/problems/sqrtx/solution/er-fen-cha-zhao-niu-dun-fa-python-dai-ma-by-liweiw/)。
+
+**总之就是为了：避免死循环**。
+
+## 问题 4：能不能解释一下其它「二分查找」的模板为什么是对的？
+
+这个问题我已经回答在 [题目求助｜二分查找不同实现方法细节困惑](https://leetcode-cn.com/circle/discuss/rFK9HC/view/tDWDHh/)。我再补充一下：不管是哪一种模板，都不会回答看到的 `mid` 的值以后如何设计条件，把区间进行正确的划分，以及：
+
++ 在某种条件下，`mid` 的值是否可以取到；
++ 下一轮搜索是在 `mid` 的左边还是右边继续查找。
+
+「模板一」告诉你全部把 `mid` 排除掉，用 `ans` 做补救，保证不会错过答案，「模板三」告诉你全部把 `mid` 保留，退出循环以后 `[left..right]` 里剩下两个数，再单独判断一下。它们有「限制死的地方」，所以一定要再理解清楚题意的情况下，正确使用。这些模板没有好坏和优劣之分，它们背后解决问题的思想是一样的。
+
+再次强调一下：我们学习算法不是背了一个模板然后往里面填空，而是我们真的清楚写的代码每一步在做什么，每一步搜索的范围是什么。更不是因为把区间表示成「左闭右开」而使得问题变得简单。
+
+## 问题 5：什么时候 `right` 取 `len` ？什么时候 `right = len - 1`？
+
+**回答**：这种问题就像你问我什么时候向左边找，什么时候向右边找，我的回答都是：**看题目，每个问题的答案都未必一样**。
+
+先回答什么时候 `right` 取 `len` ？什么时候 `right = len - 1`？就像本题（「力扣」第 35 题），「示例 3」就告诉我们，`len` 是有可能成为答案的，所以设置 `right = len`，上面第一部分「参考代码 2」的写法，「参考代码 1」已经做了一次判断，在 `len` 不可能是答案的情况下，才设置 `right = len - 1`。这一点请不要扯上区间「左闭右开」和「左闭右闭」了，毫无关系。
+
+「力扣」第 34 题，查找 `target` 在有序数组出现的第一次的位置和最后一次出现的位置，既然是数组里的位置，最小是 `0`，最大是 `len - 1`。
+
+用这两个例子还是想说：到底设置的搜索区间是什么，看题目怎么说。
+
+再回答什么时候向左边找，什么时候向右边找。回答还是 **看题目**：输入数组是升序还是降序，决定了向左边找还是向右边找。
+
+> **总结**：如果不能够正确理解题意，不去真正仔细的做练习、分析和总结，凭空想到底这些问题改怎么做，抱怨「二分查找」细节多、难是没有用的。其实根本没有想象中的难。用最直接、简单的想法看待「二分查找」就可以。
+
+下面再为大家总结一下「二分查找」的重点。
+
+## 二分查找重点概括
+
++ 写成 `while(left < right)` ，退出循环的时候有 `left == right` 成立，好处是：不用判断应该返回 `left` 还是 `right`；
++ 区间 `[left..right]` 划分只有以下两种情况：
+  + 分成 `[left..mid]` 和 `[mid + 1..right]`，分别对应 `right = mid` 和 `left = mid + 1`；
+  + 分成 `[left..mid - 1]` 和 `[mid..right]`，分别对应 `right = mid - 1` 和 `left = mid`，这种情况下。需要将 `int mid = (left + right) / 2` 改成 `int mid = (left + right + 1) / 2`，否则会出现死循环，**这一点不用记，出现死循环的时候，把 `left` 和 `right` 的值打印出来看一下就很清楚了**；
++ 退出循环 `left == right`，如果可以确定区间 `[left..right]` 一定有解，直接返回 `left` 就可以，**否则还需要对 `left` 这个位置单独做一次判断**；
++ 始终保持不变的是：在区间 `[left..right]` 里查找目标元素。
+
+关于如何写对二分查找，二分查找的详细讲解，可以查看我编写的 LeetBook 的「[二分查找](https://leetcode-cn.com/leetbook/read/learning-algorithms-with-leetcode/xsz9zc/)」 章节。
+
+---
+
+# 第三部分：二分查找题解列表（包含文字题解和视频题解）
+
+以下是练习（我写过很多「二分查找习题列表」，我暂时先把它们汇总在这里）。
+
+**提示**：这些问题都不应该套模板去做，而应该在真正弄清楚题意（明确地知道题目要我们找的元素的性质）以后，对看到的元素进行合理的分支判断，进而清楚搜索的范围。
+
+二分查找的基本思想是「减而治之」，即逐渐缩小问题规模。以下的二分查找问题，我们都不应该背下来，而应该在练习的过程中逐渐掌握分析问题、解决问题的方法。
+
+可以采用的循环不变量是：总是在区间 `[left..right]` 里查找目标元素。采用左闭右开区间只会增加麻烦。
+
+遇到问题的时候，一定需要仔细调试，使用最最基本的打印输出语句，针对错误测试用例，发现出错的原因。
+
+## 题型一：二分求下标（在数组中查找符合条件的元素的下标）
+
+**说明**：
+
++ 第 704 题：二分查找的最原始问题，使用两边夹的二分查找方法需要后处理（退出循环以后，还需要判断 `left` 或 `right` 位置的值是不是问题的答案）；
+
++ 第 34 题、第 35 题：需要明白这一类问题的共同特点，请见 [这里](https://suanfa8.com/binary-search/02/)；
++ 第 300 题：特别经典的一道「动态规划」，二分查找的思路基于「动态规划」的状态定义得到，代码很像第 35 题；
++ 第 658 题：这个问题二分的写法需要做复杂的分类讨论，可以放在以后做；
++ 第 4 题：二分查找里最难的问题，重点在于理解：① 为什么是在短数组里找边界；② 深刻理解搜索边界的意义。
+
+| 题号 | 链接                                                         | 题解                                                         |
+| ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 704  | [二分查找](https://leetcode-cn.com/problems/binary-search/)（简单） |                                                              |
+| 35   | [搜索插入位置](https://leetcode-cn.com/problems/search-insert-position/)（简单） | [【视频讲解】](https://www.bilibili.com/video/av83911694?p=2)、[文字题解](https://leetcode-cn.com/problems/search-insert-position/solution/te-bie-hao-yong-de-er-fen-cha-fa-fa-mo-ban-python-/) |
+| 300  | [最长上升子序列（中等）](https://leetcode-cn.com/problems/longest-increasing-subsequence/) | [文字题解](https://leetcode-cn.com/problems/longest-increasing-subsequence/solution/dong-tai-gui-hua-er-fen-cha-zhao-tan-xin-suan-fa-p/) |
+| 34   | [在排序数组中查找元素的第一个和最后一个位置](https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/)（简单） | [【视频讲解】](https://www.bilibili.com/video/av83911694?p=3)、[文字题解](https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/solution/si-lu-hen-jian-dan-xi-jie-fei-mo-gui-de-er-fen-cha/) |
+| 611  | [有效三角形的个数](https://leetcode-cn.com/problems/valid-triangle-number/) | [文字题解](https://leetcode-cn.com/problems/valid-triangle-number/solution/er-fen-cha-zhao-python-dai-ma-java-dai-ma-by-liwei/) |
+| 658  | [找到 K 个最接近的元素（中等）](https://leetcode-cn.com/problems/find-k-closest-elements/) | [文字题解](https://leetcode-cn.com/problems/find-k-closest-elements/solution/pai-chu-fa-shuang-zhi-zhen-er-fen-fa-python-dai-ma/) |
+| 436  | [寻找右区间](https://leetcode-cn.com/problems/find-right-interval/)（中等） | [文字题解](https://leetcode-cn.com/problems/find-right-interval/solution/er-fen-cha-zhao-hong-hei-shu-by-liweiwei1419/) |
+| 1237 | [找出给定方程的正整数解](https://leetcode-cn.com/problems/find-positive-integer-solution-for-a-given-equation/)（中等） |                                                              |
+| 1300 | [转变数组后最接近目标值的数组和](https://leetcode-cn.com/problems/sum-of-mutated-array-closest-to-target/)（中等） | [文字题解](https://leetcode-cn.com/problems/sum-of-mutated-array-closest-to-target/solution/er-fen-cha-zhao-by-liweiwei1419-2/) |
+| 4    | [寻找两个有序数组的中位数](https://leetcode-cn.com/problems/median-of-two-sorted-arrays/)（困难） | [【视频讲解】](https://www.bilibili.com/video/BV1Xv411z76J)、[文字题解](https://leetcode-cn.com/problems/median-of-two-sorted-arrays/solution/he-bing-yi-hou-zhao-gui-bing-guo-cheng-zhong-zhao-/) |
+
+使用二分查找的前提不一定非要是「有序数组」。旋转有序数组（下表前 4 题）、山脉数组（下表后 2 题）里的查找问题也可以使用「二分查找」。这些问题的解决思路是：利用 **局部单调性**，逐步缩小搜索区间。
+
+| 题号 | 链接                                                         | 题解                                                         |
+| ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 33   | [搜索旋转排序数组](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)（中等） | [文字题解](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/solution/er-fen-fa-python-dai-ma-java-dai-ma-by-liweiwei141/) |
+| 81   | [搜索旋转排序数组 II](https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii/)（中等） | [文字题解](https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii/solution/er-fen-cha-zhao-by-liweiwei1419/) |
+| 153  | [寻找旋转排序数组中的最小值](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/)（中等） | [文字题解](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/solution/er-fen-fa-fen-zhi-fa-python-dai-ma-java-dai-ma-by-/) |
+| 154  | [寻找旋转排序数组中的最小值 II](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii/)（困难） | [文字题解](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii/solution/er-fen-fa-fen-zhi-fa-python-dai-ma-by-liweiwei1419/) |
+| 852  | [山脉数组的峰顶索引（简单）](https://leetcode-cn.com/problems/peak-index-in-a-mountain-array/) |                                                              |
+| 1095 | [山脉数组中查找目标值](https://leetcode-cn.com/problems/find-in-mountain-array/)（中等） | [【视频讲解】](https://www.bilibili.com/video/BV1GK4115778)、[文字题解](https://leetcode-cn.com/problems/find-in-mountain-array/solution/shi-yong-chao-hao-yong-de-er-fen-fa-mo-ban-python-/) |
+
+## 题型二：二分答案（在一个有范围的区间里搜索一个整数）
+
+如果题目要我们找一个整数，这个整数有确定的范围，可以通过二分查找逐渐缩小范围，最后逼近到一个数。
+
+定位一个有范围的整数，这件事情也叫「二分答案」或者叫「二分结果」。如果题目要求的是一个整数，这个整数有明确的范围，可以考虑使用二分查找。
+
+事实上，二分答案是我们最早接触的二分查找的场景。「幸运 52」里猜价格游戏，就是「二分查找」算法的典型应用：先随便猜一个数，如果猜中，游戏结束。如果猜大了，往小猜；如果猜小了，往大猜。
+
+**说明**：
+
++ 第 69 题：在一个整数范围里查找一个整数，也是二分查找法的应用场景；
++ 第 275 题：这个问题题解题意得花很多时间，可以跳过不做；
++ 第 278 题：在一个整数范围里查找一个整数，**不是在输入数组里使用二分查找**。这个问题二分查找的解法很反常规（不应该用时间换空间），知道即可。
+
+| 题号 | 链接                                                         | 题解                                                         |
+| ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 69   | [x 的平方根](https://leetcode-cn.com/problems/sqrtx/)（简单） | [文字题解](https://leetcode-cn.com/problems/sqrtx/solution/er-fen-cha-zhao-niu-dun-fa-python-dai-ma-by-liweiw/) |
+| 287  | [寻找重复数](https://leetcode-cn.com/problems/find-the-duplicate-number/)（中等） | [文字题解](https://leetcode-cn.com/problems/find-the-duplicate-number/solution/er-fen-fa-si-lu-ji-dai-ma-python-by-liweiwei1419/) |
+| 374  | [猜数字大小](https://leetcode-cn.com/problems/guess-number-higher-or-lower/)（简单） | [文字题解](https://leetcode-cn.com/problems/guess-number-higher-or-lower/solution/shi-fen-hao-yong-de-er-fen-cha-zhao-fa-mo-ban-pyth/) |
+| 275  | [H指数 II（中等）](https://leetcode-cn.com/problems/h-index-ii/) | [文字题解](https://leetcode-cn.com/problems/h-index-ii/solution/jian-er-zhi-zhi-er-fen-cha-zhao-by-liweiwei1419-2/) |
+| 1283 | [使结果不超过阈值的最小除数](https://leetcode-cn.com/problems/find-the-smallest-divisor-given-a-threshold/)（中等） | [文字题解](https://leetcode-cn.com/problems/find-the-smallest-divisor-given-a-threshold/solution/er-fen-cha-zhao-ding-wei-chu-shu-by-liweiwei1419/) |
+| 1292 | [元素和小于等于阈值的正方形的最大边长](https://leetcode-cn.com/problems/maximum-side-length-of-a-square-with-sum-less-than-or-equal-to-threshold/)（中等） |                                                              |
+
+## 题型三：二分答案的升级版（每一次缩小区间的时候都需要遍历数组）
+
+**说明**：这一类问题本质上还是「题型二」（二分答案），但是初学的时候会觉得有一些绕。这一类问题的问法都差不多，**关键字是「连续」、「正整数」**，请大家注意捕捉题目中这样的关键信息。
+
+这里给出的问题解法都一样，会一题等于会其它题。问题的场景会告诉我们：**目标变量和另一个变量有相关关系（一般是线性关系），目标变量的性质不好推测，但是另一个变量的性质相对容易推测（满足某种意义上的单调性）**。这样的问题的判别函数通常会写成一个函数的形式。
+
+这一类问题可以统称为「 **最大值极小化** 」问题，最原始的问题场景是木棍切割问题，这道题的原始问题是「力扣」第 410 题（[分割数组的最大值（困难）](https://leetcode-cn.com/problems/split-array-largest-sum/)）。
+
+思路是这样的：
+
++ 分析出题目要我们找一个整数，这个整数有范围，所以可以用二分查找；
++ 分析出 **单调性**，一般来说是一个变量 `a` 的值大了，另一个变量 `b` 的值就变小，而「另一个变量的值」 `b` 有限制，因此可以通过调整 `a` 的值达到控制 `b` 的效果；
++ 这一类问题的题目条件一定会给出 **连续**、**正整数** 这样的关键字。如果没有，问题场景也一定蕴含了这两个关键信息。
+
+参考资料：
+
++ [二分查找之「最大值极小化」相关问题及解题步骤](https://juejin.im/post/6862249637161091085)
++ [二分查找之「最大值极小化」例题选讲](https://juejin.im/post/6864407058662457358/)
+
+以下给出的问题无一例外。
+
+| 题号   | 链接                                                         | 题解                                                         |
+| ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 875    | [爱吃香蕉的珂珂](https://leetcode-cn.com/problems/koko-eating-bananas/)（中等） | [文字题解](https://leetcode-cn.com/problems/koko-eating-bananas/solution/er-fen-cha-zhao-ding-wei-su-du-by-liweiwei1419/) |
+| 410    | [分割数组的最大值](https://leetcode-cn.com/problems/split-array-largest-sum/)（困难） | [文字题解](https://leetcode-cn.com/problems/split-array-largest-sum/solution/er-fen-cha-zhao-by-liweiwei1419-4/) |
+| LCP 12 | [小张刷题计划](https://leetcode-cn.com/problems/xiao-zhang-shua-ti-ji-hua/)（中等） | 题解在第 410 题题解里                                        |
+| 1011   | [在 D 天内送达包裹的能力](https://leetcode-cn.com/problems/capacity-to-ship-packages-within-d-days)（中等） |                                                              |
+| 1482   | [制作 m 束花所需的最少天数](https://leetcode-cn.com/problems/minimum-number-of-days-to-make-m-bouquets/)（中等） | 题解在第 1300 题题解里                                       |
+| 1552   | [两球之间的磁力](https://leetcode-cn.com/problems/magnetic-force-between-two-balls/)（中等） |                                                              |
+
+补充：「力扣」第 209 题：长度最小的子数组（中等），这道题可以使用「前缀和 + 二分查找」或者「滑动窗口」来做，一定要想清楚，为什么可以使用这些方法。
+
