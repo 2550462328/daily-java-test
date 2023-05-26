@@ -40,13 +40,38 @@ package cn.zhanghui.demo.daily.leetcode.editor.cn;//给定一个排序数组和�
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution35 {
     public static void main(String[] args) {
         int[] nums = {1, 3, 5, 6};
-        System.out.println(new Solution().searchInsert(nums, 7));
+        System.out.println(new Solution35().searchInsert(nums, 7));
     }
 
+    /**
+     * 折半查找法不一定要用递归等固定形式，需要根据实际情况来
+     * 比如这里我每次手动给left + (right-left)/2的距离
+     * 如果mid 大 就right -1
+     * 如果mid 小 就left + (right-left)/2
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
     public int searchInsert(int[] nums, int target) {
+        int n = nums.length;
+        int left = 0, right = n - 1, ans = n;
+        while (left <= right) {
+            int mid = ((right - left) >> 1) + left;
+            if (target <= nums[mid]) {
+                ans = mid;
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return ans;
+    }
+
+    public int searchInsert1(int[] nums, int target) {
         int r = binarySearch(0, nums.length - 1, nums, target);
         if (nums[r] == target) {
             return r;
